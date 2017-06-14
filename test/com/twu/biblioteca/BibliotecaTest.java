@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class BiblotecaTest {
+public class BibliotecaTest {
 
     List<Book> expectedListOfBooks;
 

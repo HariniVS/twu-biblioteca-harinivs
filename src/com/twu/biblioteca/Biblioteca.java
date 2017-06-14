@@ -8,11 +8,20 @@ public class Biblioteca {
 
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
 
-    public String getWELCOME_MESSAGE() {
+     String getWELCOME_MESSAGE() {
         return WELCOME_MESSAGE;
     }
 
-    public List<Book> getListOfBooks() {
+     List<Book> getListOfBooks() {
         return bookInventory.getListOfBooks();
     }
+
+    void printListOfAvailableBooks() {
+
+        for (Book currentBook : getListOfBooks()) {
+            if (currentBook.isAvailable())
+            System.out.println(currentBook);
+        }
+    }
+
 }
