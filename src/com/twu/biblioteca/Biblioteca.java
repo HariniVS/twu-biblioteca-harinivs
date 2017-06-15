@@ -21,9 +21,9 @@ public class Biblioteca {
         return bookInventory.getListOfBooks();
     }
 
-    void printListOfAvailableBooks() {
+    void displayListOfAvailableBooks() {
         for (Book currentBook : getListOfBooks()) {
-            outputWriter.printAvailableBooks(currentBook.toString());
+            outputWriter.displayAvailableBooks(currentBook.toString());
         }
     }
 

@@ -4,17 +4,16 @@ import java.io.*;
 
 public class OutputWriter {
 
-    private final Writer bufferedWriter;
+    private final Writer writer;
 
-    OutputWriter(Writer bufferedWriter) {
-        this.bufferedWriter = bufferedWriter;
+    OutputWriter(Writer writer) {
+        this.writer = writer;
     }
 
-    void printAvailableBooks(String book) {
-        System.out.println(book);
+    void displayAvailableBooks(String book) {
         try {
-            bufferedWriter.write(book+"\n");
-            bufferedWriter.flush();
+            writer.write(book + "\n");
+            writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

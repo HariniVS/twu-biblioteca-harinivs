@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import java.io.BufferedWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ import static org.junit.Assert.assertEquals;
 public class BibliotecaTest {
 
     private List<Book> expectedListOfBooks;
-    final StringWriter bufferedWriter = new StringWriter();
-    private OutputWriter outputWriter = new OutputWriter(bufferedWriter);
+    final StringWriter stringWriter = new StringWriter();
+    private OutputWriter outputWriter = new OutputWriter(stringWriter);
     String expectedOutput = "Book name = Harry Potter And The Goblet Of Fire," +
             " " +
             "Author = J K " +
@@ -31,7 +30,6 @@ public class BibliotecaTest {
 
     @Test
     public void shouldReturnAListOfBook() {
-        OutputWriter outputWriter = new OutputWriter(new BufferedWriter(new StringWriter()));
         Biblioteca biblioteca = new Biblioteca(outputWriter);
         assertEquals(getExpectedListOfBooks(), biblioteca.getListOfBooks());
     }
@@ -39,10 +37,9 @@ public class BibliotecaTest {
     @Test
     public void shouldWriteListOfBooksToOutput(){
         Biblioteca biblioteca = new Biblioteca(outputWriter);
-        biblioteca.printListOfAvailableBooks();
-        final OutputWriter outputWriter = new OutputWriter(bufferedWriter);
-        assertEquals(expectedOutput,
-                bufferedWriter.getBuffer().toString());
+        biblioteca.displayListOfAvailableBooks();
+        final StringBuffer stringBuffer = stringWriter.getBuffer();
+        assertEquals(expectedOutput, stringBuffer.toString());
     }
 
     private List<Book> getExpectedListOfBooks() {
