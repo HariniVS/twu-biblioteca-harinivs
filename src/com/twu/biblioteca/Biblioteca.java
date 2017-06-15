@@ -4,23 +4,26 @@ import java.util.List;
 
 public class Biblioteca {
 
+    private final OutputWriter outputWriter;
     BookInventory bookInventory = new BookInventory();
 
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
 
-     String getWELCOME_MESSAGE() {
+    public Biblioteca(OutputWriter outputWriter) {
+        this.outputWriter = outputWriter;
+    }
+
+    String getWELCOME_MESSAGE() {
         return WELCOME_MESSAGE;
     }
 
-     List<Book> getListOfBooks() {
+    List<Book> getListOfBooks() {
         return bookInventory.getListOfBooks();
     }
 
     void printListOfAvailableBooks() {
-
         for (Book currentBook : getListOfBooks()) {
-            if (currentBook.isAvailable())
-            System.out.println(currentBook);
+            outputWriter.printAvailableBooks(currentBook.toString());
         }
     }
 
