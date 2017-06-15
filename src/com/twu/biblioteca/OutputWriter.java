@@ -10,9 +10,9 @@ public class OutputWriter {
         this.writer = writer;
     }
 
-    void displayAvailableBooks(String book) {
+    void writeToTheConsole(String message) {
         try {
-            writer.write(book + "\n");
+            writer.write(message + "\n");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

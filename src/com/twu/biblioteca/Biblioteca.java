@@ -13,8 +13,12 @@ public class Biblioteca {
         this.outputWriter = outputWriter;
     }
 
-    String getWELCOME_MESSAGE() {
+    public String getWelcomeMessage() {
         return WELCOME_MESSAGE;
+    }
+
+    void displayWelcomeMessage() {
+        outputWriter.writeToTheConsole(WELCOME_MESSAGE);
     }
 
     List<Book> getListOfBooks() {
@@ -23,8 +27,7 @@ public class Biblioteca {
 
     void displayListOfAvailableBooks() {
         for (Book currentBook : getListOfBooks()) {
-            outputWriter.displayAvailableBooks(currentBook.toString());
+            outputWriter.writeToTheConsole(currentBook.toString());
         }
     }
-
 }

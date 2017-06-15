@@ -9,7 +9,7 @@ public class BibliotecaApplication {
     }
 
     public void run() {
-        System.out.println(biblioteca.getWELCOME_MESSAGE());
+        biblioteca.displayWelcomeMessage();
         biblioteca.displayListOfAvailableBooks();
     }
 }

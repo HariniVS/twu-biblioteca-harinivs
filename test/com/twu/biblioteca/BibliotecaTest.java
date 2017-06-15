@@ -25,7 +25,7 @@ public class BibliotecaTest {
     public void shouldAssertTheWelcomeMessage() {
         Biblioteca biblioteca = new Biblioteca(outputWriter);
         final String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
-        assertEquals(WELCOME_MESSAGE, biblioteca.getWELCOME_MESSAGE());
+        assertEquals(WELCOME_MESSAGE, biblioteca.getWelcomeMessage());
     }
 
     @Test
