@@ -6,7 +6,7 @@ import java.io.StringWriter;
 
 import static org.junit.Assert.assertEquals;
 
-public class BibliotecaApplicationTest {
+public class WorkFlowTest {
 
     String expectedSequence = "Bangalore Public Library Welcomes You\n" +
             "Book name = Harry Potter And The Goblet Of Fire, Author = J K Rowling, Year of publication = 2008\n" +
@@ -14,16 +14,16 @@ public class BibliotecaApplicationTest {
             "Rowling, Year of publication = 2012\n";
 
     @Test
-    public void shouldTestTheSequenceOfInput() {
+    public void shouldDisplayEntriesOnIndexPageInPredefinedOrder() {
 
         final StringWriter stringWriter = new StringWriter();
         OutputWriter outputWriter = new OutputWriter(stringWriter);
-        Biblioteca biblioteca = new Biblioteca(outputWriter);
-        BibliotecaApplication application = new BibliotecaApplication(biblioteca);
+        IndexPage indexPage = new IndexPage(outputWriter);
+        Workflow workflow = new Workflow(indexPage);
 
-        application.run();
+        workflow.start();
 
         final StringBuffer stringBuffer = stringWriter.getBuffer();
-        assertEquals(expectedSequence,stringBuffer.toString());
+        assertEquals(expectedSequence, stringBuffer.toString());
     }
 }

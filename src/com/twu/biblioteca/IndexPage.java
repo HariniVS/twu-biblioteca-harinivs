@@ -2,14 +2,14 @@ package com.twu.biblioteca;
 
 import java.util.List;
 
-public class Biblioteca {
+public class IndexPage {
 
     private final OutputWriter outputWriter;
     BookInventory bookInventory = new BookInventory();
 
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
 
-    public Biblioteca(OutputWriter outputWriter) {
+    public IndexPage(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
     }
 
