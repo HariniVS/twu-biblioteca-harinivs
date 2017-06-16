@@ -8,9 +8,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book " +
-                "name = " + name + ", Author = " + author +
-                ", Year of publication = " + publicationYear;
+        return "" + name + " \t\t|" + author + " \t\t|" + publicationYear + "";
     }
 
     @Override

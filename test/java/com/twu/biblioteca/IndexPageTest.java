@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.helpers.IndexPageTestHelper;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class IndexPageTest {
 
@@ -24,17 +26,14 @@ public class IndexPageTest {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         indexPage = new IndexPage(outputWriter);
-        expectedOutput = "Book name = Harry Potter And The Goblet Of Fire," +
-               " " +
-               "Author = J K " +
-               "Rowling, Year of publication = 2008\n" + "Book name = Harry Potter" +
-               " And The " +
-               "Order Of Phoenix, " +
-               "Author = J K Rowling, Year of publication = 2012\n";
-        expectedMenu = "1. List Books\n" +
-                "2. Checkout Book\n" +
-                "3. Return Book\n" +
-                "4. Quit\n";
+        expectedOutput = "Harry Potter And The Goblet Of Fire \t\t|" +
+               "J K Rowling \t\t|" +
+               "2008\n" +
+                "Harry Potter And The Order Of Phoenix \t\t|" +
+               "J K Rowling \t\t|"+ "2012\n";
+        expectedMenu = "Enter the menu of your choice\n" +
+                "1 List Books\n" +
+                "2 Quit\n";
    }
 
     @Test
@@ -60,6 +59,13 @@ public class IndexPageTest {
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
         assertEquals(expectedMenu,stringBuffer.toString());
+    }
+
+    @Test
+    public void shouldPerformActionBasedOnUserInput() {
+        IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter);
+        helper.performAction(1);
+        assertTrue(helper.isPerformActionCalled());
     }
 
     private List<Book> getExpectedListOfBooks() {
