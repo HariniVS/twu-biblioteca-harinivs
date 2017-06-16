@@ -21,7 +21,7 @@ public class IndexPage {
         return WELCOME_MESSAGE;
     }
 
-    void displayWelcomeMessage() {
+    public void displayWelcomeMessage() {
         outputWriter.write(WELCOME_MESSAGE);
     }
 
@@ -29,13 +29,13 @@ public class IndexPage {
         return bookInventory.getListOfBooks();
     }
 
-    void displayListOfAvailableBooks() {
+    public void displayListOfAvailableBooks() {
         for (Book currentBook : getListOfBooks()) {
             outputWriter.write(currentBook.toString());
         }
     }
 
-    void displayMenuToUser() {
+    public void displayMenuToUser() {
 
         outputWriter.write("Enter the menu of your choice");
         menuItems = mainMenu.getMenuItems();
@@ -45,14 +45,12 @@ public class IndexPage {
         }
     }
 
-    int getInputFromUser() {
+    public int getInputFromUser() {
         int userInput = Integer.parseInt(inputReader.readFromConsole());
         return userInput;
     }
 
     public void performAction(int inputFromUser) {
-        menuItems.get(inputFromUser);
-
         switch (inputFromUser) {
             case 1:
                 displayListOfAvailableBooks();
