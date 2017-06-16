@@ -10,6 +10,8 @@ public class IndexPage {
 
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
     private Menu mainMenu = new Menu();
+    private InputReader inputReader = new InputReader();
+    private Map<Integer, String> menuItems;
 
     public IndexPage(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
@@ -35,10 +37,30 @@ public class IndexPage {
 
     void displayMenuToUser() {
 
-    final Map<Integer, String> menuItems = mainMenu.getMenuItems();
+        outputWriter.write("Enter the menu of your choice");
+        menuItems = mainMenu.getMenuItems();
         for (Map.Entry<Integer, String> mapEntry : menuItems.entrySet()) {
-            outputWriter.write(String.valueOf(mapEntry.getKey())+" "+mapEntry
+            outputWriter.write(String.valueOf(mapEntry.getKey()) + " " + mapEntry
                     .getValue());
         }
+    }
+
+    int getInputFromUser() {
+        int userInput = Integer.parseInt(inputReader.readFromConsole());
+        return userInput;
+    }
+
+    public void performAction(int inputFromUser) {
+        menuItems.get(inputFromUser);
+
+        switch (inputFromUser) {
+            case 1:
+                displayListOfAvailableBooks();
+                break;
+            case 2:
+                System.exit(0);
+                break;
+        }
+
     }
 }

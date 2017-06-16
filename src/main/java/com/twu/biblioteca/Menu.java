@@ -9,6 +9,7 @@ public class Menu {
 
     Menu() {
         mainMenu.put(1, "List Books");
+        mainMenu.put(2, "Quit");
     }
 
     public void addOptionsToMenu(Integer option, String menu) {
