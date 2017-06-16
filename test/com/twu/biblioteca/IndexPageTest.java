@@ -31,27 +31,35 @@ public class IndexPageTest {
                " And The " +
                "Order Of Phoenix, " +
                "Author = J K Rowling, Year of publication = 2012\n";
+        expectedMenu = "1. List Books\n" +
+                "2. Checkout Book\n" +
+                "3. Return Book\n" +
+                "4. Quit\n";
    }
 
     @Test
     public void shouldAssertTheWelcomeMessage() {
-        IndexPage indexPage = new IndexPage(outputWriter);
         final String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
         assertEquals(WELCOME_MESSAGE, indexPage.getWelcomeMessage());
     }
 
     @Test
     public void shouldReturnAListOfBooks() {
-        IndexPage indexPage = new IndexPage(outputWriter);
         assertEquals(getExpectedListOfBooks(), indexPage.getListOfBooks());
     }
 
     @Test
     public void shouldWriteListOfBooksToOutput(){
-        IndexPage indexPage = new IndexPage(outputWriter);
         indexPage.displayListOfAvailableBooks();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
         assertEquals(expectedOutput, stringBuffer.toString());
+    }
+
+    @Test
+    public void shouldDisplayMenu() {
+        indexPage.displayMenuToUser();
+        final StringBuffer stringBuffer = stringWriter.getBuffer();
+        assertEquals(expectedMenu,stringBuffer.toString());
     }
 
     private List<Book> getExpectedListOfBooks() {

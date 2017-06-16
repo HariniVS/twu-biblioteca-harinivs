@@ -11,5 +11,6 @@ public class Workflow {
     public void start() {
         indexPage.displayWelcomeMessage();
         indexPage.displayListOfAvailableBooks();
+        indexPage.displayMenuToUser();
     }
 }

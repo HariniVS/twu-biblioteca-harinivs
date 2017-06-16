@@ -29,7 +29,16 @@ public class IndexPage {
 
     void displayListOfAvailableBooks() {
         for (Book currentBook : getListOfBooks()) {
-            outputWriter.writeToTheConsole(currentBook.toString());
+            outputWriter.write(currentBook.toString());
+        }
+    }
+
+    void displayMenuToUser() {
+
+    final Map<Integer, String> menuItems = mainMenu.getMenuItems();
+        for (Map.Entry<Integer, String> mapEntry : menuItems.entrySet()) {
+            outputWriter.write(String.valueOf(mapEntry.getKey())+" "+mapEntry
+                    .getValue());
         }
     }
 }
