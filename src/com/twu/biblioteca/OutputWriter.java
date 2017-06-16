@@ -10,7 +10,7 @@ public class OutputWriter {
         this.writer = writer;
     }
 
-    void writeToTheConsole(String message) {
+    void write(String message) {
         try {
             writer.write(message + "\n");
             writer.flush();

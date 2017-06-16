@@ -15,11 +15,15 @@ public class IndexPageTest {
     private OutputWriter outputWriter;
     private StringWriter stringWriter;
     private String expectedOutput;
+    private IndexPage indexPage;
+    private String expectedMenu;
+
 
     @Before
     public void setUp() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
         expectedOutput = "Book name = Harry Potter And The Goblet Of Fire," +
                " " +
                "Author = J K " +

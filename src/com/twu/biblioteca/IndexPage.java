@@ -1,13 +1,15 @@
 package com.twu.biblioteca;
 
 import java.util.List;
+import java.util.Map;
 
 public class IndexPage {
 
     private final OutputWriter outputWriter;
-    BookInventory bookInventory = new BookInventory();
+    private BookInventory bookInventory = new BookInventory();
 
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
+    private Menu mainMenu = new Menu();
 
     public IndexPage(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
@@ -18,7 +20,7 @@ public class IndexPage {
     }
 
     void displayWelcomeMessage() {
-        outputWriter.writeToTheConsole(WELCOME_MESSAGE);
+        outputWriter.write(WELCOME_MESSAGE);
     }
 
     List<Book> getListOfBooks() {
