@@ -11,6 +11,7 @@ public class Workflow {
     }
 
     public void start() {
+
         indexPage.displayWelcomeMessage();
 
         do {

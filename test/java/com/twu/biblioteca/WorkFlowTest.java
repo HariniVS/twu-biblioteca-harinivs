@@ -1,29 +1,38 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.helpers.IndexPageTestHelper;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.io.StringWriter;
+import java.io.OutputStreamWriter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class WorkFlowTest {
 
-    String expectedSequence = "Bangalore Public Library Welcomes You\n" +
-            "Book name = Harry Potter And The Goblet Of Fire, Author = J K Rowling, Year of publication = 2008\n" +
-            "Book name = Harry Potter And The Order Of Phoenix, Author = J K " +
-            "Rowling, Year of publication = 2012\n";
+    private Workflow workflow;
+    private OutputStreamWriter writer;
+    private OutputWriter outputWriter;
+    private IndexPageTestHelper indexPageTestHelper;
+
+    @Before
+    public void setUp() {
+        writer = new OutputStreamWriter(System.out);
+        outputWriter = new OutputWriter(writer);
+        indexPageTestHelper = new IndexPageTestHelper(outputWriter);
+        workflow = new Workflow(indexPageTestHelper);
+    }
 
     @Test
-    public void shouldDisplayEntriesOnIndexPageInPredefinedOrder() {
-
-        final StringWriter stringWriter = new StringWriter();
-        OutputWriter outputWriter = new OutputWriter(stringWriter);
-        IndexPage indexPage = new IndexPage(outputWriter);
-        Workflow workflow = new Workflow(indexPage);
-
+    public void shouldUseIndexPageToDisplayWelcomeMessage() {
         workflow.start();
-
-        final StringBuffer stringBuffer = stringWriter.getBuffer();
-        assertEquals(expectedSequence, stringBuffer.toString());
+        assertTrue(indexPageTestHelper.isDisplayWelcomeMessageCalled());
     }
+
+    @Test
+    public void shouldUseDisplayMenuToUser() {
+        workflow.start();
+        assertTrue(indexPageTestHelper.isDisplayMenuToUserCalled());
+    }
+
 }

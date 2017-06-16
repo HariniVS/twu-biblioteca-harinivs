@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.helpers.IndexPageTestHelper;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -18,41 +17,43 @@ public class IndexPageTest {
     private List<Book> expectedListOfBooks;
     private OutputWriter outputWriter;
     private StringWriter stringWriter;
-    private String expectedOutput;
     private IndexPage indexPage;
-    private String expectedMenu;
-    private InputReader inputReader;
 
+    private String expectedOutput = "Harry Potter And The Goblet Of Fire \t\t|" +
+            "J K Rowling \t\t|" +
+            "2008\n" +
+            "Harry Potter And The Order Of Phoenix \t\t|" +
+            "J K Rowling \t\t|"+ "2012\n";
+    private String expectedMenu = "Enter the menu of your choice\n" +
+                    "1 List Books\n" +
+                    "2 Quit\n";
 
-    @Before
-    public void setUp() {
-        stringWriter = new StringWriter();
-        outputWriter = new OutputWriter(stringWriter);
-        inputReader = new InputReader();
-        indexPage = new IndexPage(outputWriter);
-        expectedOutput = "Harry Potter And The Goblet Of Fire \t\t|" +
-               "J K Rowling \t\t|" +
-               "2008\n" +
-                "Harry Potter And The Order Of Phoenix \t\t|" +
-               "J K Rowling \t\t|"+ "2012\n";
-        expectedMenu = "Enter the menu of your choice\n" +
-                "1 List Books\n" +
-                "2 Quit\n";
-   }
 
     @Test
     public void shouldAssertTheWelcomeMessage() {
+        stringWriter = new StringWriter();
+        outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
+
         final String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
         assertEquals(WELCOME_MESSAGE, indexPage.getWelcomeMessage());
     }
 
     @Test
     public void shouldReturnAListOfBooks() {
+        stringWriter = new StringWriter();
+        outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
+
         assertEquals(getExpectedListOfBooks(), indexPage.getListOfBooks());
     }
 
     @Test
     public void shouldWriteListOfBooksToOutput(){
+        stringWriter = new StringWriter();
+        outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
+
         indexPage.displayListOfAvailableBooks();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
@@ -61,6 +62,10 @@ public class IndexPageTest {
 
     @Test
     public void shouldDisplayMenu() {
+        stringWriter = new StringWriter();
+        outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
+
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
@@ -73,11 +78,15 @@ public class IndexPageTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        assertEquals("1", inputReader.readInput());
+        assertEquals("1", new InputReader().readInput());
     }
 
     @Test
     public void shouldPerformActionBasedOnUserInput() {
+        stringWriter = new StringWriter();
+        outputWriter = new OutputWriter(stringWriter);
+        indexPage = new IndexPage(outputWriter);
+
         IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter);
         helper.performAction("1");
 
