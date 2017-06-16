@@ -19,12 +19,14 @@ public class IndexPageTest {
     private String expectedOutput;
     private IndexPage indexPage;
     private String expectedMenu;
+    private InputReader inputReader;
 
 
     @Before
     public void setUp() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
+        inputReader = new InputReader();
         indexPage = new IndexPage(outputWriter);
         expectedOutput = "Harry Potter And The Goblet Of Fire \t\t|" +
                "J K Rowling \t\t|" +
@@ -51,6 +53,7 @@ public class IndexPageTest {
     public void shouldWriteListOfBooksToOutput(){
         indexPage.displayListOfAvailableBooks();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
+
         assertEquals(expectedOutput, stringBuffer.toString());
     }
 
@@ -58,13 +61,24 @@ public class IndexPageTest {
     public void shouldDisplayMenu() {
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
+
         assertEquals(expectedMenu,stringBuffer.toString());
+    }
+
+    @Test
+    public void shouldTakeUserInput() {
+        String input = "1";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertEquals("1", inputReader.readInput());
     }
 
     @Test
     public void shouldPerformActionBasedOnUserInput() {
         IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter);
-        helper.performAction(1);
+        helper.performAction("1");
+
         assertTrue(helper.isPerformActionCalled());
     }
 

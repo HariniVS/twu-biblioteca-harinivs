@@ -12,12 +12,11 @@ public class Workflow {
 
     public void start() {
         indexPage.displayWelcomeMessage();
-        indexPage.displayListOfAvailableBooks();
 
         do {
             indexPage.displayMenuToUser();
             inputFromUser = indexPage.getInputFromUser();
             indexPage.performAction(inputFromUser);
-        }while (inputFromUser != 2);
+        }while (inputFromUser.equals("2"));
     }
 }
