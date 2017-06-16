@@ -6,7 +6,7 @@ public class OutputWriter {
 
     private final Writer writer;
 
-    OutputWriter(Writer writer) {
+    public OutputWriter(Writer writer) {
         this.writer = writer;
     }
 

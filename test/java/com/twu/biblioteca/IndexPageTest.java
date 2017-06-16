@@ -4,6 +4,8 @@ import com.twu.biblioteca.helpers.IndexPageTestHelper;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;

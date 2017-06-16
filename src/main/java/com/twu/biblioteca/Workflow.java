@@ -4,7 +4,7 @@ public class Workflow {
 
     private final IndexPage indexPage;
 
-    int inputFromUser;
+    private String inputFromUser;
 
     public Workflow(IndexPage indexPage) {
         this.indexPage = indexPage;
