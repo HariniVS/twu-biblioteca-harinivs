@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 
 public class OutputWriter {
 

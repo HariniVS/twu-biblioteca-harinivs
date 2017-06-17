@@ -34,6 +34,6 @@ public class CheckoutAction implements Action {
     }
 
     public String getBookNameFromUser() {
-       return inputReader.readInput();
+        return inputReader.readInput();
     }
 }

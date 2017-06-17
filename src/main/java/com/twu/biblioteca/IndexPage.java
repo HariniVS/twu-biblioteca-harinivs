@@ -57,10 +57,21 @@ public class IndexPage {
         return userInput;
     }
 
-    public void performAction(String inputFromUser) {
+    public void performAction(String input) {
         menuItems = mainMenu.getMenuItems();
-        Action actionToBePerformed = menuItems.get(inputFromUser);
-        actionToBePerformed.performAction();
+        if (isValid(input)) {
+            Action actionToBePerformed = menuItems.get(input);
+            actionToBePerformed.performAction();
+        } else {
+            outputWriter.write("Select a valid option!");
+        }
+    }
+
+    public boolean isValid(String input) {
+        if (Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5) {
+            return true;
+        }
+        return false;
     }
 
     public boolean checkoutBook(String bookName) {

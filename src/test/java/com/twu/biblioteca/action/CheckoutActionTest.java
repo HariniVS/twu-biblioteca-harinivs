@@ -35,7 +35,7 @@ public class CheckoutActionTest {
     @Test
     public void shouldReturnTheOption() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
-        assertEquals("Checkout Book",checkoutAction.toString());
+        assertEquals("Checkout Book", checkoutAction.toString());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class CheckoutActionTest {
     public void shouldNotDisplayCheckedOutBook() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
         checkoutAction.performAction();
-        assertEquals(getExpectedListOfBooks(),indexPage.getListOfAvailableBooks());
+        assertEquals(getExpectedListOfBooks(), indexPage.getListOfAvailableBooks());
     }
 
     private List<Book> getExpectedListOfBooks() {

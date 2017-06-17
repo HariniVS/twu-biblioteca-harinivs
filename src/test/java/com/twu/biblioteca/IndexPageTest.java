@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.helpers.IndexPageTestHelper;
 import org.junit.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -18,16 +19,16 @@ public class IndexPageTest {
     private StringWriter stringWriter;
     private IndexPage indexPage;
 
-    private String expectedOutput = "The Alchemist \t\t|" + "Paulo Coelho \t\t|" + "1988\n"+
+    private String expectedOutput = "The Alchemist \t\t|" + "Paulo Coelho \t\t|" + "1988\n" +
             "Harry Potter And The Goblet Of Fire \t\t|" +
             "J K Rowling \t\t|" +
             "2008\n" +
             "Harry Potter And The Order Of Phoenix \t\t|" +
-            "J K Rowling \t\t|"+ "2012\n";
+            "J K Rowling \t\t|" + "2012\n";
     private String expectedMenu = "Enter the menu of your choice\n" +
-                    "1 List Books\n" +
-                    "2 Checkout Book\n"+
-                    "3 Quit\n";
+            "1 List Books\n" +
+            "2 Checkout Book\n" +
+            "3 Quit\n";
 
 
     @Test
@@ -50,7 +51,7 @@ public class IndexPageTest {
     }
 
     @Test
-    public void shouldWriteListOfBooksToOutput(){
+    public void shouldWriteListOfBooksToOutput() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         indexPage = new IndexPage(outputWriter);
@@ -70,7 +71,7 @@ public class IndexPageTest {
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
-        assertEquals(expectedMenu,stringBuffer.toString());
+        assertEquals(expectedMenu, stringBuffer.toString());
     }
 
     @Test

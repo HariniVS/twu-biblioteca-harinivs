@@ -18,6 +18,6 @@ public class Workflow {
             indexPage.displayMenuToUser();
             inputFromUser = indexPage.getInputFromUser();
             indexPage.performAction(inputFromUser);
-        }while (!inputFromUser.equals("3"));
+        } while (!inputFromUser.equals("3"));
     }
 }

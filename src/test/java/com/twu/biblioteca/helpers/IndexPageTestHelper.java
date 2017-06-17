@@ -32,8 +32,8 @@ public class IndexPageTestHelper extends IndexPage {
     }
 
     @Override
-    public void performAction(String inputFromUser) {
-        super.performAction(inputFromUser);
+    public void performAction(String input) {
+        super.performAction(input);
         isPerformActionCalled = true;
     }
 

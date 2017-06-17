@@ -35,7 +35,7 @@ public class BookInventory {
     }
 
     public boolean checkoutBook(String bookName) {
-        for (Book book: getListOfBooks()) {
+        for (Book book : getListOfBooks()) {
             if (bookName.equals(book.getName())) {
                 book.setAvailability(false);
                 return true;

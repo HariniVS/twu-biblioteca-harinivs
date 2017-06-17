@@ -1,7 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.menu.Action;
-import com.twu.biblioteca.menu.*;
+import com.twu.biblioteca.menu.CheckoutAction;
+import com.twu.biblioteca.menu.ListAction;
+import com.twu.biblioteca.menu.QuitAction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +11,7 @@ import java.util.Map;
 public class Menu {
 
     private final OutputWriter outputWriter;
-    private Map<String,Action> mainMenu = new HashMap<String, Action>();
+    private Map<String, Action> mainMenu = new HashMap<String, Action>();
 
     Menu(OutputWriter outputWriter, InputReader inputReader) {
         this.outputWriter = outputWriter;
