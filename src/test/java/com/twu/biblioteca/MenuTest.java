@@ -21,7 +21,7 @@ public class MenuTest {
     public void setUp() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
-        menu = new Menu(outputWriter);
+        menu = new Menu(outputWriter, new InputReader());
         expectedMenu = "List Books";
     }
 

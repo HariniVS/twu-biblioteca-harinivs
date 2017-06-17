@@ -18,14 +18,16 @@ public class IndexPageTest {
     private StringWriter stringWriter;
     private IndexPage indexPage;
 
-    private String expectedOutput = "Harry Potter And The Goblet Of Fire \t\t|" +
+    private String expectedOutput = "The Alchemist \t\t|" + "Paulo Coelho \t\t|" + "1988\n"+
+            "Harry Potter And The Goblet Of Fire \t\t|" +
             "J K Rowling \t\t|" +
             "2008\n" +
             "Harry Potter And The Order Of Phoenix \t\t|" +
             "J K Rowling \t\t|"+ "2012\n";
     private String expectedMenu = "Enter the menu of your choice\n" +
                     "1 List Books\n" +
-                    "2 Quit\n";
+                    "2 Checkout Book\n"+
+                    "3 Quit\n";
 
 
     @Test

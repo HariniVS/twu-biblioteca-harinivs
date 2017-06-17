@@ -33,4 +33,14 @@ public class BookInventory {
                 "J K Rowling", 2012, true));
         return listOfBooks;
     }
+
+    public boolean checkoutBook(String bookName) {
+        for (Book book: getListOfBooks()) {
+            if (bookName.equals(book.getName())) {
+                book.setAvailability(false);
+                return true;
+            }
+        }
+        return false;
+    }
 }

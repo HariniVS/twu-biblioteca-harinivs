@@ -11,10 +11,11 @@ public class Menu {
     private final OutputWriter outputWriter;
     private Map<String,Action> mainMenu = new HashMap<String, Action>();
 
-    Menu(OutputWriter outputWriter) {
+    Menu(OutputWriter outputWriter, InputReader inputReader) {
         this.outputWriter = outputWriter;
         addOptionsToMenu("1", new ListAction(outputWriter));
-        addOptionsToMenu("2", new QuitAction());
+        addOptionsToMenu("2", new CheckoutAction(outputWriter, inputReader));
+        addOptionsToMenu("3", new QuitAction());
     }
 
     public void addOptionsToMenu(String option, Action action) {

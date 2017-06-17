@@ -17,7 +17,7 @@ public class IndexPage {
 
     public IndexPage(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
-        mainMenu = new Menu(outputWriter);
+        mainMenu = new Menu(outputWriter, new InputReader());
     }
 
     public String getWelcomeMessage() {
@@ -61,5 +61,9 @@ public class IndexPage {
         menuItems = mainMenu.getMenuItems();
         Action actionToBePerformed = menuItems.get(inputFromUser);
         actionToBePerformed.performAction();
+    }
+
+    public boolean checkoutBook(String bookName) {
+        return bookInventory.checkoutBook(bookName);
     }
 }
