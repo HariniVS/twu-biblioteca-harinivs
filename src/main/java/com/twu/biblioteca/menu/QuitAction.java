@@ -9,6 +9,6 @@ public class QuitAction implements Action {
 
     @Override
     public void performAction() {
-        System.exit(0);
+
     }
 }
