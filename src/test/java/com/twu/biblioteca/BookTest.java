@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BookTest {
 
@@ -28,5 +29,12 @@ public class BookTest {
     public void shouldReturnABook() {
         Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
         assertEquals("The Alchemist \t\t|Paulo Coelho \t\t|1988", book.toString());
+    }
+
+    @Test
+    public void shouldTestTheAvailabilityOfTheBook() {
+        Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
+        book.setAvailability(true);
+        assertTrue(book.isAvailable());
     }
 }
