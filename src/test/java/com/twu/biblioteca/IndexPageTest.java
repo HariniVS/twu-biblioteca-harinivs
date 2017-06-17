@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.helpers.IndexPageTestHelper;
 import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -95,10 +94,8 @@ public class IndexPageTest {
 
     private List<Book> getExpectedListOfBooks() {
         expectedListOfBooks = new ArrayList<Book>();
-        expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of " +
-                "Fire", "J K Rowling", 2008));
-        expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix",
-                "J K Rowling", 2012));
+        expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling", 2008));
+        expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling", 2012));
         return expectedListOfBooks;
     }
 
