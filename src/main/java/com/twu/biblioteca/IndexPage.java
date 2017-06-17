@@ -28,12 +28,16 @@ public class IndexPage {
         outputWriter.write(WELCOME_MESSAGE);
     }
 
-    List<Book> getListOfBooks() {
+    public List<Book> getListOfBooks() {
         return bookInventory.getListOfBooks();
     }
 
+    public List<Book> getListOfAvailableBooks() {
+        return bookInventory.getListOfAvailableBooks();
+    }
+
     public void displayListOfAvailableBooks() {
-        for (Book currentBook : getListOfBooks()) {
+        for (Book currentBook : getListOfAvailableBooks()) {
             outputWriter.write(currentBook.toString());
         }
     }

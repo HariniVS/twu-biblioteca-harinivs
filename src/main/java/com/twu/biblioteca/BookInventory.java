@@ -6,6 +6,7 @@ import java.util.List;
 public class BookInventory {
 
     private List<Book> listOfBooks = new LinkedList<Book>();
+    private List<Book> listOfAvailableBooks = new LinkedList<Book>();
 
     public BookInventory() {
         addBooks();
@@ -13,6 +14,15 @@ public class BookInventory {
 
     public List<Book> getListOfBooks() {
         return listOfBooks;
+    }
+
+    public List<Book> getListOfAvailableBooks() {
+        for (Book book : getListOfBooks()) {
+            if (book.isAvailable()) {
+                listOfAvailableBooks.add(book);
+            }
+        }
+        return listOfAvailableBooks;
     }
 
     private List<Book> addBooks() {
