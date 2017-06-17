@@ -29,7 +29,7 @@ public class MenuTest {
     public void shouldReturnMenuItems() {
         menu.addOptionsToMenu("1", new ListAction(outputWriter));
         final Map<String, Action> menuItems = menu.getMenuItems();
-        final Action action = menuItems.get(1);
+        final Action action = menuItems.get("1");
         assertEquals(expectedMenu, action.toString());
     }
 
@@ -37,7 +37,7 @@ public class MenuTest {
     public void shouldAddItemsToMenu() {
         menu.addOptionsToMenu("1", new ListAction(outputWriter));
         final Map<String, Action> menuItems = menu.getMenuItems();
-        final Action action = menuItems.get(1);
+        final Action action = menuItems.get("1");
         assertEquals(expectedMenu, action.toString());
     }
 

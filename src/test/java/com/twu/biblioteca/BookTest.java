@@ -27,6 +27,6 @@ public class BookTest {
     @Test
     public void shouldReturnABook() {
         Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
-        assertEquals("Book name = The Alchemist, Author = Paulo Coelho, Year of publication = 1988", book.toString());
+        assertEquals("The Alchemist \t\t|Paulo Coelho \t\t|1988", book.toString());
     }
 }
