@@ -24,10 +24,11 @@ public class Book {
                 && book.getPublicationYear() == publicationYear;
     }
 
-    Book(String name, String author, int publicationYear) {
+    public Book(String name, String author, int publicationYear, boolean availability) {
         this.name = name;
         this.author = author;
         this.publicationYear = publicationYear;
+        this.availability = true;
     }
 
     public String getName() {
@@ -42,9 +43,7 @@ public class Book {
         return publicationYear;
     }
 
-    public boolean isAvailable() {
-        return availability;
-    }
+    public boolean isAvailable() { return availability; }
 
     public void setAvailability(boolean availability) {
         this.availability = availability;

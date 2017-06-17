@@ -94,11 +94,13 @@ public class IndexPageTest {
 
     private List<Book> getExpectedListOfBooks() {
         expectedListOfBooks = new ArrayList<Book>();
-        expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling", 2008));
-        expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling", 2012));
+        expectedListOfBooks.add(new Book("The Alchemist", "Paulo Coelho", 1988, true));
+        expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling",
+                2008, true));
+        expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling",
+                2012, true));
         return expectedListOfBooks;
     }
-
 }
 
 
