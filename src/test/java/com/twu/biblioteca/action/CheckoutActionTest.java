@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 
 public class CheckoutActionTest {
 
-    private StringWriter stringWriter;
     private OutputWriter outputWriter;
     private IndexPage indexPage;
     private InputReader inputReader;
@@ -26,14 +25,14 @@ public class CheckoutActionTest {
 
     @Before
     public void setUp() {
-        stringWriter = new StringWriter();
+        StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         inputReader = new InputReaderTestHelper("The Alchemist");
         indexPage = new IndexPage(outputWriter);
     }
 
     @Test
-    public void shouldReturnTheOption() {
+    public void shouldReturnOption() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
         assertEquals("Checkout Book", checkoutAction.toString());
     }

@@ -8,38 +8,24 @@ import java.util.Map;
 public class IndexPage {
 
     private final OutputWriter outputWriter;
-    private BookInventory bookInventory = new BookInventory();
-
     private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
     private InputReader inputReader = new InputReader();
     private Map<String, Action> menuItems;
     private Menu mainMenu;
+    private BookInventory bookInventory;
 
     public IndexPage(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
         mainMenu = new Menu(outputWriter, new InputReader());
-    }
-
-    public String getWelcomeMessage() {
-        return WELCOME_MESSAGE;
+        bookInventory = new BookInventory();
     }
 
     public void displayWelcomeMessage() {
         outputWriter.write(WELCOME_MESSAGE);
     }
 
-    public List<Book> getListOfBooks() {
-        return bookInventory.getListOfBooks();
-    }
-
-    public List<Book> getListOfAvailableBooks() {
-        return bookInventory.getListOfAvailableBooks();
-    }
-
-    public void displayListOfAvailableBooks() {
-        for (Book currentBook : getListOfAvailableBooks()) {
-            outputWriter.write(currentBook.toString());
-        }
+    public List<Book> getAvailableBooks() {
+        return bookInventory.getAvailableBooks();
     }
 
     public void displayMenuToUser() {

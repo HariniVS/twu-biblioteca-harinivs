@@ -1,7 +1,10 @@
 package com.twu.biblioteca.menu;
 
+import com.twu.biblioteca.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
+
+import java.util.List;
 
 public class ListAction implements Action {
 
@@ -19,7 +22,9 @@ public class ListAction implements Action {
 
     @Override
     public void performAction() {
-        IndexPage indexPage = new IndexPage(outputWriter);
-        indexPage.displayListOfAvailableBooks();
+        List<Book> books = new IndexPage(outputWriter).getAvailableBooks();
+        for ( Book book: books) {
+            outputWriter.write(book.toString());
+        }
     }
 }

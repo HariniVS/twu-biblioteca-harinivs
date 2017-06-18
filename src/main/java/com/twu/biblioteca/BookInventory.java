@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookInventory {
@@ -10,7 +10,7 @@ public class BookInventory {
     }
 
     public List<Book> getAvailableBooks() {
-        List<Book> availableBooks = new LinkedList<>();
+        List<Book> availableBooks = new ArrayList<>();
         for (Book book : getListOfBooks()) {
             if (book.isAvailable()) {
                 availableBooks.add(book);
