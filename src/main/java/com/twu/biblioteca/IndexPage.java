@@ -20,8 +20,8 @@ public class IndexPage {
     }
 
     public void displayWelcomeMessage() {
-        String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
-        outputWriter.write(WELCOME_MESSAGE);
+        String welcomeMessage = "Bangalore Public Library Welcomes You !!";
+        outputWriter.write(welcomeMessage);
     }
 
     public List<Book> getAvailableBooks() {
@@ -29,7 +29,6 @@ public class IndexPage {
     }
 
     public void displayMenuToUser() {
-
         outputWriter.write("Enter the menu of your choice");
         menuItems = mainMenu.getMenuItems();
         for (Map.Entry<String, Action> mapEntry : menuItems.entrySet()) {
@@ -44,16 +43,8 @@ public class IndexPage {
 
     public void performAction(String input) {
         menuItems = mainMenu.getMenuItems();
-        if (isValid(input)) {
-            Action actionToBePerformed = menuItems.get(input);
-            actionToBePerformed.performAction();
-        } else {
-            outputWriter.write("Select a valid option!");
-        }
-    }
-
-    private boolean isValid(String input) {
-        return Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5;
+        Action action = menuItems.getOrDefault(input, new InvalidEntry(outputWriter));
+        action.performAction();
     }
 
     public boolean checkoutBook(String bookName) {

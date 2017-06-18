@@ -21,12 +21,11 @@ public class ReturnAction implements Action {
     @Override
     public void performAction() {
         IndexPage indexPage = new IndexPage(outputWriter);
-        String bookName = getBookNameFromUser();
-        if (indexPage.returnBook(bookName)) {
+        if (indexPage.returnBook(getBookNameFromUser())) {
             outputWriter.write("Thank you for returning the book.");
-        } else {
-            outputWriter.write("That is not a valid book to return.");
+            return;
         }
+            outputWriter.write("That is not a valid book to return.");
     }
 
     private String getBookNameFromUser() {

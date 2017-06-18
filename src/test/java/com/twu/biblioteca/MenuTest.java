@@ -40,4 +40,12 @@ public class MenuTest {
         assertEquals(expectedMenu, action.toString());
     }
 
+    @Test
+    public void ShouldHandleInvalidMenu() {
+        final Map<String, Action> menuItems = menu.getMenuItems();
+        final Action action = menuItems.getOrDefault("7", new InvalidEntry(outputWriter));
+        String expectedMenu = "Select a valid option!";
+
+        assertEquals(expectedMenu, action.toString());
+    }
 }

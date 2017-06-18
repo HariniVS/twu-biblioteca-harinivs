@@ -6,7 +6,6 @@ public class Book {
     private String name;
     private String author;
     private int publicationYear;
-    private boolean availability;
 
     @Override
     public String toString() {
@@ -34,17 +33,9 @@ public class Book {
         return name;
     }
 
-    private String getAuthor() {
+    String getAuthor() {
         return author;
     }
 
-    private int getPublicationYear() {
-        return publicationYear;
-    }
-
-    boolean isAvailable() { return availability; }
-
-    void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
+    int getPublicationYear() { return publicationYear; }
 }

@@ -13,7 +13,7 @@ class Menu {
         addOptionsToMenu("1", new ListAction(outputWriter));
         addOptionsToMenu("2", new CheckoutAction(outputWriter, inputReader));
         addOptionsToMenu("3", new ReturnAction(outputWriter, inputReader));
-        addOptionsToMenu("4", new QuitAction());
+        addOptionsToMenu("4", new QuitAction(outputWriter));
     }
 
     void addOptionsToMenu(String option, Action action) {

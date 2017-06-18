@@ -23,12 +23,11 @@ public class CheckoutAction implements Action {
     @Override
     public void performAction() {
         IndexPage indexPage = new IndexPage(outputWriter);
-        String bookName = getBookNameFromUser();
-        if (indexPage.checkoutBook(bookName)) {
+        if (indexPage.checkoutBook(getBookNameFromUser())) {
             outputWriter.write("Thank you! Enjoy the book.");
-        } else {
-            outputWriter.write("That book is not available.");
+            return;
         }
+        outputWriter.write("That book is not available.");
     }
 
     public String getBookNameFromUser() {
