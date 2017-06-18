@@ -20,11 +20,9 @@ class Books {
 
     private static List<Book> addBooks() {
         listOfBooksInstance = new LinkedList<>();
+        listOfBooksInstance.add(new Book("The Fountainhead", "Ayn Rand", 1943));
         listOfBooksInstance.add(new Book("The Alchemist", "Paulo Coelho", 1988));
-        listOfBooksInstance.add(new Book("Harry Potter And The Goblet Of Fire",
-                "J K Rowling", 2008));
-        listOfBooksInstance.add(new Book("Harry Potter And The Order Of Phoenix",
-                "J K Rowling", 2012));
+        listOfBooksInstance.add(new Book("The Stars Shine Down", "Sidney Sheldon", 1992));
         return listOfBooksInstance;
     }
 }

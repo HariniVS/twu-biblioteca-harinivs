@@ -9,7 +9,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "" + name + " \t\t|" + author + " \t\t|" + publicationYear + "";
+        return String.format("%-50s%-20s%-20s",name, author, publicationYear);
     }
 
     @Override

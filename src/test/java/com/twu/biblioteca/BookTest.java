@@ -13,15 +13,22 @@ public class BookTest {
     }
 
     @Test
-    public void shouldReturnABook() {
+    public void shouldReturnAuthorName() {
         Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
-        assertEquals("The Alchemist \t\t|Paulo Coelho \t\t|1988", book.toString());
+        assertEquals("Paulo Coelho", book.getAuthor());
     }
 
     @Test
-    public void shouldTestTheAvailabilityOfTheBook() {
+    public void shouldReturnPublicationYear() {
         Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
-        book.setAvailability(true);
-        assertTrue(book.isAvailable());
+        assertEquals(1988, book.getPublicationYear());
+    }
+
+    @Test
+    public void shouldReturnABook() {
+        Book book = new Book("The Alchemist", "Paulo Coelho", 1988);
+        String expectedOutput = String.format("%-50s%-20s%-20s", "The Alchemist", "Paulo Coelho",
+                "1988");
+        assertEquals(expectedOutput, book.toString());
     }
 }

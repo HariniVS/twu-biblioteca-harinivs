@@ -46,11 +46,9 @@ public class ReturnActionTest {
 
     private List<Book> getExpectedListOfBooks() {
         List<Book> expectedListOfBooks = new ArrayList<>();
+        expectedListOfBooks.add(new Book("The Fountainhead", "Ayn Rand", 1943));
         expectedListOfBooks.add(new Book("The Alchemist", "Paulo Coelho", 1988));
-        expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling",
-                2008));
-        expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling",
-                2012));
+        expectedListOfBooks.add(new Book("The Stars Shine Down", "Sidney Sheldon", 1992));
         return expectedListOfBooks;
     }
 }
