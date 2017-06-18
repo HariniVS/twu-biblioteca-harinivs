@@ -77,4 +77,8 @@ public class IndexPage {
     public boolean checkoutBook(String bookName) {
         return bookInventory.checkoutBook(bookName);
     }
+
+    public boolean returnBook(String bookName) {
+        return bookInventory.returnBook(bookName);
+    }
 }
