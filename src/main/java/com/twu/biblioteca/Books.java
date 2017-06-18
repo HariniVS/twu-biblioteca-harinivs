@@ -20,11 +20,11 @@ public class Books {
 
     public static List<Book> addBooks() {
         listOfBooksInstance = new LinkedList<>();
-        listOfBooksInstance.add(new Book("The Alchemist", "Paulo Coelho", 1988, true));
+        listOfBooksInstance.add(new Book("The Alchemist", "Paulo Coelho", 1988));
         listOfBooksInstance.add(new Book("Harry Potter And The Goblet Of Fire",
-                "J K Rowling", 2008, true));
+                "J K Rowling", 2008));
         listOfBooksInstance.add(new Book("Harry Potter And The Order Of Phoenix",
-                "J K Rowling", 2012, true));
+                "J K Rowling", 2012));
         return listOfBooksInstance;
     }
 }

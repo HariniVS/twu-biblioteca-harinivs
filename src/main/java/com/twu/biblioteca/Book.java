@@ -24,7 +24,7 @@ public class Book {
                 && book.getPublicationYear() == publicationYear;
     }
 
-    public Book(String name, String author, int publicationYear, boolean availability) {
+    public Book(String name, String author, int publicationYear) {
         this.name = name;
         this.author = author;
         this.publicationYear = publicationYear;

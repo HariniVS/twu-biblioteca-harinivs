@@ -49,15 +49,15 @@ public class CheckoutActionTest {
     public void shouldNotDisplayCheckedOutBook() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
         checkoutAction.performAction();
-        assertEquals(getExpectedListOfBooks(), indexPage.getListOfAvailableBooks());
+        assertEquals(getExpectedListOfBooks(), indexPage.getAvailableBooks());
     }
 
     private List<Book> getExpectedListOfBooks() {
-        expectedListOfBooks = new ArrayList<Book>();
+        expectedListOfBooks = new ArrayList<>();
         expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling",
-                2008, true));
+                2008));
         expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling",
-                2012, true));
+                2012));
         return expectedListOfBooks;
     }
 }
