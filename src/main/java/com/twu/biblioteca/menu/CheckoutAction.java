@@ -8,8 +8,6 @@ public class CheckoutAction implements Action {
 
     private final OutputWriter outputWriter;
     private final InputReader inputReader;
-    private IndexPage indexPage;
-    private String bookName;
 
 
     public CheckoutAction(OutputWriter outputWriter, InputReader inputReader) {
@@ -24,8 +22,8 @@ public class CheckoutAction implements Action {
 
     @Override
     public void performAction() {
-        indexPage = new IndexPage(outputWriter);
-        bookName = getBookNameFromUser();
+        IndexPage indexPage = new IndexPage(outputWriter);
+        String bookName = getBookNameFromUser();
         if (indexPage.checkoutBook(bookName)) {
             outputWriter.write("Thank you! Enjoy the book.");
         } else {

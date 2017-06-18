@@ -20,8 +20,6 @@ public class CheckoutActionTest {
     private OutputWriter outputWriter;
     private IndexPage indexPage;
     private InputReader inputReader;
-    private List<Book> expectedListOfBooks;
-    private String expectedBookName = "The Alchemist";
 
     @Before
     public void setUp() {
@@ -41,6 +39,7 @@ public class CheckoutActionTest {
     public void shouldGetBookNameFromUser() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
         String bookName = checkoutAction.getBookNameFromUser();
+        String expectedBookName = "The Alchemist";
         assertEquals(expectedBookName, bookName);
     }
 
@@ -52,7 +51,7 @@ public class CheckoutActionTest {
     }
 
     private List<Book> getExpectedListOfBooks() {
-        expectedListOfBooks = new ArrayList<>();
+        List<Book> expectedListOfBooks = new ArrayList<>();
         expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling",
                 2008));
         expectedListOfBooks.add(new Book("Harry Potter And The Order Of Phoenix", "J K Rowling",

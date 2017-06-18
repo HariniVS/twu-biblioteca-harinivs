@@ -11,14 +11,12 @@ import static org.junit.Assert.assertTrue;
 public class WorkFlowTest {
 
     private Workflow workflow;
-    private OutputStreamWriter writer;
-    private OutputWriter outputWriter;
     private IndexPageTestHelper indexPageTestHelper;
 
     @Before
     public void setUp() {
-        writer = new OutputStreamWriter(System.out);
-        outputWriter = new OutputWriter(writer);
+        OutputStreamWriter writer = new OutputStreamWriter(System.out);
+        OutputWriter outputWriter = new OutputWriter(writer);
         indexPageTestHelper = new IndexPageTestHelper(outputWriter);
         workflow = new Workflow(indexPageTestHelper);
     }

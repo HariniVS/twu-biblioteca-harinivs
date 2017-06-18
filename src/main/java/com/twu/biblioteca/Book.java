@@ -31,22 +31,21 @@ public class Book {
         this.availability = true;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getAuthor() {
+    private String getAuthor() {
         return author;
     }
 
-    public int getPublicationYear() {
+    private int getPublicationYear() {
         return publicationYear;
     }
 
-    public boolean isAvailable() { return availability; }
+    boolean isAvailable() { return availability; }
 
-    public void setAvailability(boolean availability) {
+    void setAvailability(boolean availability) {
         this.availability = availability;
     }
-
 }

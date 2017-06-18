@@ -16,7 +16,7 @@ public class BookInventoryTest {
     }
 
     private List<Book> getExpectedListOfBooks() {
-        ArrayList<Book> expectedListOfBooks = new ArrayList<Book>();
+        ArrayList<Book> expectedListOfBooks = new ArrayList<>();
         expectedListOfBooks.add(new Book("The Alchemist", "Paulo Coelho", 1988));
         expectedListOfBooks.add(new Book("Harry Potter And The Goblet Of Fire", "J K Rowling",
                 2008));

@@ -14,12 +14,11 @@ public class MenuTest {
 
     private Menu menu;
     private String expectedMenu;
-    private StringWriter stringWriter;
     private OutputWriter outputWriter;
 
     @Before
     public void setUp() {
-        stringWriter = new StringWriter();
+        StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         menu = new Menu(outputWriter, new InputReader());
         expectedMenu = "List Books";

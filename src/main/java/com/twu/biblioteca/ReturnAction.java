@@ -27,7 +27,7 @@ public class ReturnAction implements Action {
         }
     }
 
-    public String getBookNameFromUser() {
+    private String getBookNameFromUser() {
         return inputReader.readInput();
     }
 }

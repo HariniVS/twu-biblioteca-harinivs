@@ -3,13 +3,13 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookInventory {
+class BookInventory {
 
     private List<Book> getListOfBooks() {
         return Books.getInstance();
     }
 
-    public List<Book> getAvailableBooks() {
+    List<Book> getAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
         for (Book book : getListOfBooks()) {
             if (book.isAvailable()) {
@@ -19,7 +19,7 @@ public class BookInventory {
         return availableBooks;
     }
 
-    public boolean checkoutBook(String bookName) {
+    boolean checkoutBook(String bookName) {
         for (Book book : getAvailableBooks()) {
             if (bookName.equals(book.getName())) {
                 book.setAvailability(false);
@@ -29,7 +29,7 @@ public class BookInventory {
         return false;
     }
 
-    public boolean returnBook(String bookName) {
+    boolean returnBook(String bookName) {
         for (Book book : getListOfBooks()) {
             if (bookName.equals(book.getName()) && !book.isAvailable()) {
                 book.setAvailability(true);

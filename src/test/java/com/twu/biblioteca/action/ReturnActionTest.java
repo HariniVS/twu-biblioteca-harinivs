@@ -37,7 +37,7 @@ public class ReturnActionTest {
 
     @Test
     public void shouldDisplayAReturnedBook() {
-        CheckoutAction checkoutAction = new CheckoutAction(outputWriter,inputReader);
+        CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
         checkoutAction.performAction();
         ReturnAction returnAction = new ReturnAction(outputWriter, inputReader);
         returnAction.performAction();

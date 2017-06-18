@@ -1,19 +1,18 @@
 package com.twu.biblioteca;
 
-public class Workflow {
+class Workflow {
 
     private final IndexPage indexPage;
 
-    private String inputFromUser;
-
-    public Workflow(IndexPage indexPage) {
+    Workflow(IndexPage indexPage) {
         this.indexPage = indexPage;
     }
 
-    public void start() {
+     void start() {
 
         indexPage.displayWelcomeMessage();
 
+        String inputFromUser;
         do {
             indexPage.displayMenuToUser();
             inputFromUser = indexPage.getInputFromUser();

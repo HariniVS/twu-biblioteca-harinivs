@@ -8,7 +8,6 @@ import java.util.Map;
 public class IndexPage {
 
     private final OutputWriter outputWriter;
-    private String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
     private InputReader inputReader = new InputReader();
     private Map<String, Action> menuItems;
     private Menu mainMenu;
@@ -21,6 +20,7 @@ public class IndexPage {
     }
 
     public void displayWelcomeMessage() {
+        String WELCOME_MESSAGE = "Bangalore Public Library Welcomes You";
         outputWriter.write(WELCOME_MESSAGE);
     }
 
@@ -39,8 +39,7 @@ public class IndexPage {
     }
 
     public String getInputFromUser() {
-        String userInput = inputReader.readInput();
-        return userInput;
+        return inputReader.readInput();
     }
 
     public void performAction(String input) {
@@ -53,18 +52,15 @@ public class IndexPage {
         }
     }
 
-    public boolean isValid(String input) {
-        if (Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5) {
-            return true;
-        }
-        return false;
+    private boolean isValid(String input) {
+        return Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5;
     }
 
     public boolean checkoutBook(String bookName) {
         return bookInventory.checkoutBook(bookName);
     }
 
-    public boolean returnBook(String bookName) {
+    boolean returnBook(String bookName) {
         return bookInventory.returnBook(bookName);
     }
 }

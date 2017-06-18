@@ -8,11 +8,11 @@ public class IndexPageTestHelper extends IndexPage {
     private boolean isPerformActionCalled;
     private boolean isDisplayWelcomeMessageCalled;
     private boolean isDisplayMenuToUserCalled;
-    private String defaultExitValue = "4";
+    private final String DEFAULT_EXIT_VALUE = "4";
 
     @Override
     public String getInputFromUser() {
-        return defaultExitValue;
+        return DEFAULT_EXIT_VALUE;
     }
 
     public IndexPageTestHelper(OutputWriter outputWriter) {

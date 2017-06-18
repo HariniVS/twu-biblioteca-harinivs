@@ -16,12 +16,6 @@ public class IndexPageTest {
     private StringWriter stringWriter;
     private IndexPage indexPage;
 
-    private String expectedMenu = "Enter the menu of your choice\n" +
-            "1 List Books\n" +
-            "2 Checkout Book\n" +
-            "3 Return Book\n" +
-            "4 Quit\n";
-
     @Test
     public void shouldDisplayMenu() {
         stringWriter = new StringWriter();
@@ -31,6 +25,11 @@ public class IndexPageTest {
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
+        String expectedMenu = "Enter the menu of your choice\n" +
+                "1 List Books\n" +
+                "2 Checkout Book\n" +
+                "3 Return Book\n" +
+                "4 Quit\n";
         assertEquals(expectedMenu, stringBuffer.toString());
     }
 
