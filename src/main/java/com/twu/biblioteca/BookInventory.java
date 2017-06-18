@@ -5,34 +5,39 @@ import java.util.List;
 
 public class BookInventory {
 
-    private List<Book> getListOfBooks() {
-        return Books.getInstance();
+    private List<Book> listOfBooks = new LinkedList<Book>();
+    private List<Book> listOfAvailableBooks = new LinkedList<Book>();
+
+    public BookInventory() {
+        addBooks();
     }
 
-    public List<Book> getAvailableBooks() {
-        List<Book> availableBooks = new LinkedList<>();
+    public List<Book> getListOfBooks() {
+        return listOfBooks;
+    }
+
+    public List<Book> getListOfAvailableBooks() {
         for (Book book : getListOfBooks()) {
             if (book.isAvailable()) {
-                availableBooks.add(book);
+                listOfAvailableBooks.add(book);
             }
         }
-        return availableBooks;
+        return listOfAvailableBooks;
+    }
+
+    private List<Book> addBooks() {
+        listOfBooks.add(new Book("The Alchemist", "Paulo Coelho", 1988, true));
+        listOfBooks.add(new Book("Harry Potter And The Goblet Of Fire",
+                "J K Rowling", 2008, true));
+        listOfBooks.add(new Book("Harry Potter And The Order Of Phoenix",
+                "J K Rowling", 2012, true));
+        return listOfBooks;
     }
 
     public boolean checkoutBook(String bookName) {
-        for (Book book : getAvailableBooks()) {
+        for (Book book : getListOfBooks()) {
             if (bookName.equals(book.getName())) {
                 book.setAvailability(false);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean returnBook(String bookName) {
-        for (Book book : getListOfBooks()) {
-            if (bookName.equals(book.getName()) && !book.isAvailable()) {
-                book.setAvailability(true);
                 return true;
             }
         }

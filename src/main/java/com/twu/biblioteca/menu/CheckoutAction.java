@@ -27,9 +27,9 @@ public class CheckoutAction implements Action {
         indexPage = new IndexPage(outputWriter);
         bookName = getBookNameFromUser();
         if (indexPage.checkoutBook(bookName)) {
-            outputWriter.write("Thank you! Enjoy the book.");
+            outputWriter.write("Thank you! Enjoy the book");
         } else {
-            outputWriter.write("That book is not available.");
+            outputWriter.write("That book is not available");
         }
     }
 
