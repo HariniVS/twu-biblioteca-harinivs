@@ -60,7 +60,7 @@ public class IndexPage {
         return bookInventory.checkoutBook(bookName);
     }
 
-    boolean returnBook(String bookName) {
+    public boolean returnBook(String bookName) {
         return bookInventory.returnBook(bookName);
     }
 }

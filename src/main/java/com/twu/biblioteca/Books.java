@@ -6,8 +6,7 @@ import java.util.List;
 class Books {
 
     private static volatile List<Book> listOfBooksInstance;
-
-    static List<Book> getInstance() {
+    static List<Book> getBooks() {
         if (listOfBooksInstance == null) {
             synchronized (Books.class) {
                 if (listOfBooksInstance == null) {

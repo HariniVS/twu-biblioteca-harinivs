@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.menu.Action;
-import com.twu.biblioteca.menu.CheckoutAction;
-import com.twu.biblioteca.menu.ListAction;
-import com.twu.biblioteca.menu.QuitAction;
+import com.twu.biblioteca.menu.*;
 
 import java.util.HashMap;
 import java.util.Map;

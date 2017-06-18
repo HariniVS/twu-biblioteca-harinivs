@@ -3,7 +3,7 @@ package com.twu.biblioteca.action;
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
-import com.twu.biblioteca.ReturnAction;
+import com.twu.biblioteca.menu.ReturnAction;
 import com.twu.biblioteca.helpers.InputReaderTestHelper;
 import com.twu.biblioteca.menu.CheckoutAction;
 import org.junit.Before;

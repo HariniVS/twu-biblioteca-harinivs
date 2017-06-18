@@ -1,6 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.menu.Action;
+import com.twu.biblioteca.IndexPage;
+import com.twu.biblioteca.InputReader;
+import com.twu.biblioteca.OutputWriter;
 
 public class ReturnAction implements Action {
     private final OutputWriter outputWriter;
