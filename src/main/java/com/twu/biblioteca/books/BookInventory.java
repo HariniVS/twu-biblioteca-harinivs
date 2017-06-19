@@ -6,23 +6,26 @@ import java.util.Map;
 
 public class BookInventory {
 
+    private List<Book> bookList;
     private final Books books = new Books();
     private Map<Book, Boolean> bookAvailability;
-    private final BooksStatus booksStatus = new BooksStatus();
-
-    private List<Book> bookList;
 
     public BookInventory() {
-        bookList = getBookList();
-        bookAvailability = getBookAvailability();
+        bookAvailability = getAllBooks();
+        bookList = getBooks(bookAvailability);
     }
 
-    private List<Book> getBookList() {
+    private List<Book> getBooks(Map<Book, Boolean> bookAvailability) {
+        bookList = new ArrayList<>();
+        for (Map.Entry<Book, Boolean> book : bookAvailability.entrySet()) {
+            bookList.add(book.getKey());
+        }
+        return bookList;
+    }
+
+
+    private Map<Book, Boolean> getAllBooks() {
         return books.getBooks();
-    }
-
-    private Map<Book, Boolean> getBookAvailability() {
-        return booksStatus.getAvailableBooks(bookList);
     }
 
     private Book getBook(String bookName) {
