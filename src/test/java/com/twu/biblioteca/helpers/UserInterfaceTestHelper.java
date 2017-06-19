@@ -27,8 +27,8 @@ public class UserInterfaceTestHelper extends UserInterface {
     }
 
     @Override
-    public void displayMenuToUser() {
-        super.displayMenuToUser();
+    public void displayMenu() {
+        super.displayMenu();
         isDisplayMenuToUserCalled = true;
     }
 

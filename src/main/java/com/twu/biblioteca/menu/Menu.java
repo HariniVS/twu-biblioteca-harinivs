@@ -21,5 +21,4 @@ public class Menu {
     public Map<String, Action> getMenuItems() {
         return mainMenu;
     }
-
 }

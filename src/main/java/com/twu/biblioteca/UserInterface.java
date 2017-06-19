@@ -31,7 +31,7 @@ public class UserInterface {
         return bookInventory.getAvailableBooks();
     }
 
-    public void displayMenuToUser() {
+    public void displayMenu() {
         outputWriter.write("Enter the menu of your choice");
         menuItems = mainMenu.getMenuItems();
         for (Map.Entry<String, Action> mapEntry : menuItems.entrySet()) {

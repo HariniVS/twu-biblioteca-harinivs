@@ -2,22 +2,22 @@ package com.twu.biblioteca;
 
 class Workflow {
 
-    private final UserInterface indexPage;
+    private final UserInterface userInterface;
+    private final String QUIT = "4";
 
-    Workflow(UserInterface indexPage) {
-        this.indexPage = indexPage;
+    Workflow(UserInterface userInterface) {
+        this.userInterface = userInterface;
     }
 
     void start() {
 
-        indexPage.displayWelcomeMessage();
+        userInterface.displayWelcomeMessage();
 
         String inputFromUser;
-        final String QUIT = "4";
         do {
-            indexPage.displayMenuToUser();
-            inputFromUser = indexPage.getInputFromUser();
-            indexPage.performAction(inputFromUser);
+            userInterface.displayMenu();
+            inputFromUser = userInterface.getInputFromUser();
+            userInterface.performAction(inputFromUser);
         } while (!inputFromUser.equals(QUIT));
     }
 }

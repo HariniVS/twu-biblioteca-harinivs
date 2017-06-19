@@ -25,7 +25,7 @@ public class UserInterfaceTest {
         bookInventory = new BookInventory();
         indexPage = new UserInterface(outputWriter, bookInventory);
 
-        indexPage.displayMenuToUser();
+        indexPage.displayMenu();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
         String expectedMenu = "Enter the menu of your choice\n" +
