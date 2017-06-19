@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.helpers.IndexPageTestHelper;
 import org.junit.Test;
 
@@ -14,13 +15,15 @@ public class IndexPageTest {
 
     private OutputWriter outputWriter;
     private StringWriter stringWriter;
+    private BookInventory bookInventory;
     private IndexPage indexPage;
 
     @Test
     public void shouldDisplayMenu() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
-        indexPage = new IndexPage(outputWriter);
+        bookInventory = new BookInventory();
+        indexPage = new IndexPage(outputWriter, bookInventory);
 
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
@@ -46,9 +49,10 @@ public class IndexPageTest {
     public void shouldPerformActionBasedOnUserInput() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
-        indexPage = new IndexPage(outputWriter);
+        bookInventory = new BookInventory();
+        indexPage = new IndexPage(outputWriter, bookInventory);
 
-        IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter);
+        IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter, bookInventory);
         helper.performAction("1");
 
         assertTrue(helper.isPerformActionCalled());

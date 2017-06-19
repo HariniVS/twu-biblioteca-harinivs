@@ -5,24 +5,21 @@ import java.util.List;
 
 class Books {
 
-    private static volatile List<Book> listOfBooksInstance;
+    private List<Book> listOfBooksInstance;
 
-    static List<Book> getBooks() {
-        if (listOfBooksInstance == null) {
-            synchronized (Books.class) {
-                if (listOfBooksInstance == null) {
-                    listOfBooksInstance = addBooks();
-                }
-            }
-        }
-        return listOfBooksInstance;
+    Books() {
+        addBooks();
     }
 
-    private static List<Book> addBooks() {
+    private void addBooks() {
         listOfBooksInstance = new LinkedList<>();
         listOfBooksInstance.add(new Book("The Fountainhead", "Ayn Rand", 1943));
         listOfBooksInstance.add(new Book("The Alchemist", "Paulo Coelho", 1988));
         listOfBooksInstance.add(new Book("The Stars Shine Down", "Sidney Sheldon", 1992));
+    }
+
+
+    public List<Book> getBooks() {
         return listOfBooksInstance;
     }
 }

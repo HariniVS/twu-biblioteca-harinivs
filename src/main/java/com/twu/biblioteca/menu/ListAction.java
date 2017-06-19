@@ -21,9 +21,9 @@ public class ListAction implements Action {
     }
 
     @Override
-    public void performAction() {
-        List<Book> books = new IndexPage(outputWriter).getAvailableBooks();
-        for ( Book book: books) {
+    public void performAction(IndexPage indexPage) {
+        List<Book> books = indexPage.getAvailableBooks();
+        for (Book book : books) {
             outputWriter.write(book.toString());
         }
     }

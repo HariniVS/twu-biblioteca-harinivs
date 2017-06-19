@@ -3,6 +3,7 @@ package com.twu.biblioteca.action;
 import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.menu.ReturnAction;
 import com.twu.biblioteca.helpers.InputReaderTestHelper;
 import com.twu.biblioteca.menu.CheckoutAction;
@@ -20,13 +21,15 @@ public class ReturnActionTest {
     private OutputWriter outputWriter;
     private InputReaderTestHelper inputReader;
     private IndexPage indexPage;
+    private BookInventory bookInventory;
 
     @Before
     public void setUp() {
         StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         inputReader = new InputReaderTestHelper("The Alchemist\nThe Alchemist");
-        indexPage = new IndexPage(outputWriter);
+        bookInventory = new BookInventory();
+        indexPage = new IndexPage(outputWriter, bookInventory);
     }
 
     @Test
@@ -38,9 +41,9 @@ public class ReturnActionTest {
     @Test
     public void shouldDisplayAReturnedBook() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
-        checkoutAction.performAction();
+        checkoutAction.performAction(new IndexPage(outputWriter, bookInventory));
         ReturnAction returnAction = new ReturnAction(outputWriter, inputReader);
-        returnAction.performAction();
+        returnAction.performAction(new IndexPage(outputWriter, bookInventory));
         assertEquals(getExpectedListOfBooks(), indexPage.getAvailableBooks());
     }
 

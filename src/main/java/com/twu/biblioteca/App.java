@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.books.BookInventory;
+
 import java.io.OutputStreamWriter;
 
 public class App {
@@ -8,7 +10,8 @@ public class App {
 
         OutputStreamWriter writer = new OutputStreamWriter(System.out);
         OutputWriter outputWriter = new OutputWriter(writer);
-        IndexPage indexPage = new IndexPage(outputWriter);
+        BookInventory bookInventory = new BookInventory();
+        IndexPage indexPage = new IndexPage(outputWriter, bookInventory);
 
         Workflow workflow = new Workflow(indexPage);
         workflow.start();

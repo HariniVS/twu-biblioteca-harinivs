@@ -2,6 +2,7 @@ package com.twu.biblioteca.helpers;
 
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.books.BookInventory;
 
 public class IndexPageTestHelper extends IndexPage {
 
@@ -15,8 +16,8 @@ public class IndexPageTestHelper extends IndexPage {
         return DEFAULT_EXIT_VALUE;
     }
 
-    public IndexPageTestHelper(OutputWriter outputWriter) {
-        super(outputWriter);
+    public IndexPageTestHelper(OutputWriter outputWriter, BookInventory bookInventory) {
+        super(outputWriter, bookInventory);
     }
 
     @Override

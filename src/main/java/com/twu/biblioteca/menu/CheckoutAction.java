@@ -21,8 +21,7 @@ public class CheckoutAction implements Action {
     }
 
     @Override
-    public void performAction() {
-        IndexPage indexPage = new IndexPage(outputWriter);
+    public void performAction(IndexPage indexPage) {
         if (indexPage.checkoutBook(getBookNameFromUser())) {
             outputWriter.write("Thank you! Enjoy the book.");
             return;

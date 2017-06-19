@@ -11,15 +11,15 @@ import java.util.Map;
 public class IndexPage {
 
     private final OutputWriter outputWriter;
+    private final BookInventory bookInventory;
     private InputReader inputReader = new InputReader();
     private Map<String, Action> menuItems;
     private Menu mainMenu;
-    private BookInventory bookInventory;
 
-    public IndexPage(OutputWriter outputWriter) {
+    public IndexPage(OutputWriter outputWriter, BookInventory bookInventory) {
         this.outputWriter = outputWriter;
+        this.bookInventory = bookInventory;
         mainMenu = new Menu(outputWriter, new InputReader());
-        bookInventory = new BookInventory();
     }
 
     public void displayWelcomeMessage() {
@@ -47,7 +47,7 @@ public class IndexPage {
     public void performAction(String input) {
         menuItems = mainMenu.getMenuItems();
         Action action = menuItems.getOrDefault(input, new InvalidEntry(outputWriter));
-        action.performAction();
+        action.performAction(new IndexPage(outputWriter,bookInventory));
     }
 
     public boolean checkoutBook(String bookName) {

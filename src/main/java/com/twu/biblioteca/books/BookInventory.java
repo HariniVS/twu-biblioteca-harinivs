@@ -1,24 +1,32 @@
 package com.twu.biblioteca.books;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class BookInventory {
 
-    private Map<Book, Boolean> bookAvailability = new LinkedHashMap<>();
+    private final Books books = new Books();
+    private Map<Book, Boolean> bookAvailability;
+    private final BooksStatus booksStatus = new BooksStatus();
 
-    private List<Book> getBooks() {
-        return Books.getBooks();
+    private List<Book> bookList;
+
+    public BookInventory() {
+        bookList = getBookList();
+        bookAvailability = getBookAvailability();
     }
 
-    private Map<Book, Boolean> getAvailabilityStatusOfBooks() {
-        return BooksStatus.getAvailableBooks(getBooks());
+    private List<Book> getBookList() {
+        return books.getBooks();
+    }
+
+    private Map<Book, Boolean> getBookAvailability() {
+        return booksStatus.getAvailableBooks(bookList);
     }
 
     private Book getBook(String bookName) {
-        for (Book book : getBooks()) {
+        for (Book book : bookList) {
             if (book.getName().equals(bookName)) {
                 return book;
             }
@@ -28,7 +36,6 @@ public class BookInventory {
 
     public List<Book> getAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
-        bookAvailability = getAvailabilityStatusOfBooks();
         for (Map.Entry<Book, Boolean> book : bookAvailability.entrySet()) {
             if (book.getValue()) {
                 availableBooks.add(book.getKey());
@@ -38,7 +45,7 @@ public class BookInventory {
     }
 
     public boolean checkoutBook(String bookName) {
-        for (Book book : getAvailableBooks()) {
+        for (Book book : bookList) {
             if (bookName.equals(book.getName())) {
                 bookAvailability.put(book, false);
                 return true;
@@ -49,7 +56,6 @@ public class BookInventory {
 
     public boolean returnBook(String bookName) {
         Book book = getBook(bookName);
-        bookAvailability = getAvailabilityStatusOfBooks();
         if (bookAvailability.containsKey(book) && (!bookAvailability.get(book))) {
             bookAvailability.put(book, true);
             return true;

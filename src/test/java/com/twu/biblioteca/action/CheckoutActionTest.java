@@ -4,6 +4,7 @@ import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.helpers.InputReaderTestHelper;
 import com.twu.biblioteca.menu.CheckoutAction;
 import org.junit.Before;
@@ -20,13 +21,15 @@ public class CheckoutActionTest {
     private OutputWriter outputWriter;
     private IndexPage indexPage;
     private InputReader inputReader;
+    private BookInventory bookInventory;
 
     @Before
     public void setUp() {
         StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         inputReader = new InputReaderTestHelper("The Alchemist");
-        indexPage = new IndexPage(outputWriter);
+        bookInventory = new BookInventory();
+        indexPage = new IndexPage(outputWriter, bookInventory);
     }
 
     @Test
@@ -46,7 +49,7 @@ public class CheckoutActionTest {
     @Test
     public void shouldNotDisplayCheckedOutBook() {
         CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
-        checkoutAction.performAction();
+        checkoutAction.performAction(new IndexPage(outputWriter, bookInventory));
         assertEquals(getExpectedListOfBooks(), indexPage.getAvailableBooks());
     }
 
