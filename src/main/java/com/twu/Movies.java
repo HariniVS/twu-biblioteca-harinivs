@@ -7,10 +7,6 @@ import java.util.Map;
 
 class Movies {
 
-    Map<Movie, Boolean> getMovies() {
-        return movies;
-    }
-
     private Map<Movie, Boolean> movies;
 
     Movies() {
@@ -21,5 +17,9 @@ class Movies {
         movies = new LinkedHashMap<>();
         movies.put(new Movie("Pulp Fiction", 1922, "Quentin Tarantino", 9), true);
         movies.put(new Movie("3 Idiots", 2011, "Raj Kumar", 9), true);
+    }
+
+    Map<Movie, Boolean> getMovies() {
+        return movies;
     }
 }
