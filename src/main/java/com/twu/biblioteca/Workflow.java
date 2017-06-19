@@ -8,15 +8,16 @@ class Workflow {
         this.indexPage = indexPage;
     }
 
-     void start() {
+    void start() {
 
         indexPage.displayWelcomeMessage();
 
         String inputFromUser;
+        final String QUIT = "4";
         do {
             indexPage.displayMenuToUser();
             inputFromUser = indexPage.getInputFromUser();
             indexPage.performAction(inputFromUser);
-        } while (!inputFromUser.equals("4"));
+        } while (!inputFromUser.equals(QUIT));
     }
 }
