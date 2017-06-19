@@ -1,6 +1,5 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.UserInterface;
 
 public class ReturnAction implements Action {
@@ -22,7 +21,7 @@ public class ReturnAction implements Action {
         userInterface.write("That is not a valid book to return.");
     }
 
-    private String getBookNameFromUser() {
+    public String getBookNameFromUser() {
         return userInterface.getInputFromUser();
     }
 }

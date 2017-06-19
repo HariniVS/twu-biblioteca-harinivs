@@ -1,6 +1,5 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.UserInterface;
 
 public class CheckoutAction implements Action {
