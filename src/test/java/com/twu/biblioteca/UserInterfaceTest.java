@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.books.BookInventory;
-import com.twu.biblioteca.helpers.IndexPageTestHelper;
+import com.twu.biblioteca.helpers.UserInterfaceTestHelper;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -11,19 +11,19 @@ import java.io.StringWriter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class IndexPageTest {
+public class UserInterfaceTest {
 
     private OutputWriter outputWriter;
     private StringWriter stringWriter;
     private BookInventory bookInventory;
-    private IndexPage indexPage;
+    private UserInterface indexPage;
 
     @Test
     public void shouldDisplayMenu() {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         bookInventory = new BookInventory();
-        indexPage = new IndexPage(outputWriter, bookInventory);
+        indexPage = new UserInterface(outputWriter, bookInventory);
 
         indexPage.displayMenuToUser();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
@@ -50,9 +50,9 @@ public class IndexPageTest {
         stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
         bookInventory = new BookInventory();
-        indexPage = new IndexPage(outputWriter, bookInventory);
+        indexPage = new UserInterface(outputWriter, bookInventory);
 
-        IndexPageTestHelper helper = new IndexPageTestHelper(outputWriter, bookInventory);
+        UserInterfaceTestHelper helper = new UserInterfaceTestHelper(outputWriter, bookInventory);
         helper.performAction("1");
 
         assertTrue(helper.isPerformActionCalled());

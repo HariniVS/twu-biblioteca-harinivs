@@ -1,6 +1,5 @@
 package com.twu.biblioteca.books;
 
-import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.InvalidEntry;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.menu.Action;
@@ -24,13 +23,13 @@ public class MenuTest {
     public void setUp() {
         StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
-        menu = new Menu(outputWriter, new InputReader());
+        menu = new Menu();
         expectedMenu = "List Books";
     }
 
     @Test
     public void shouldReturnMenuItems() {
-        menu.addOptionsToMenu("1", new ListAction(outputWriter));
+        menu.addOptionsToMenu("1", new ListAction());
         final Map<String, Action> menuItems = menu.getMenuItems();
         final Action action = menuItems.get("1");
         assertEquals(expectedMenu, action.toString());
@@ -38,7 +37,7 @@ public class MenuTest {
 
     @Test
     public void shouldAddItemsToMenu() {
-        menu.addOptionsToMenu("1", new ListAction(outputWriter));
+        menu.addOptionsToMenu("1", new ListAction());
         final Map<String, Action> menuItems = menu.getMenuItems();
         final Action action = menuItems.get("1");
         assertEquals(expectedMenu, action.toString());

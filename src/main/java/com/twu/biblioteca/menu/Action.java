@@ -1,8 +1,8 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.IndexPage;
+import com.twu.biblioteca.UserInterface;
 
 public interface Action {
 
-    void performAction(IndexPage indexPage);
+    void performAction(UserInterface userInterface);
 }

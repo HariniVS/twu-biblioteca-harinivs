@@ -1,19 +1,11 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.InputReader;
-import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.UserInterface;
 
 public class CheckoutAction implements Action {
 
-    private final OutputWriter outputWriter;
-    private final InputReader inputReader;
-
-
-    public CheckoutAction(OutputWriter outputWriter, InputReader inputReader) {
-        this.outputWriter = outputWriter;
-        this.inputReader = inputReader;
-    }
+    private UserInterface userInterface;
 
     @Override
     public String toString() {
@@ -21,15 +13,16 @@ public class CheckoutAction implements Action {
     }
 
     @Override
-    public void performAction(IndexPage indexPage) {
-        if (indexPage.checkoutBook(getBookNameFromUser())) {
-            outputWriter.write("Thank you! Enjoy the book.");
+    public void performAction(UserInterface userInterface) {
+        this.userInterface = userInterface;
+        if (userInterface.checkoutBook(getBookNameFromUser())) {
+            userInterface.write("Thank you! Enjoy the book.");
             return;
         }
-        outputWriter.write("That book is not available.");
+        userInterface.write("That book is not available.");
     }
 
     public String getBookNameFromUser() {
-        return inputReader.readInput();
+        return userInterface.getInputFromUser();
     }
 }

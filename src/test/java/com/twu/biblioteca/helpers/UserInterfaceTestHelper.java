@@ -1,10 +1,11 @@
 package com.twu.biblioteca.helpers;
 
-import com.twu.biblioteca.IndexPage;
+import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.UserInterface;
 import com.twu.biblioteca.books.BookInventory;
 
-public class IndexPageTestHelper extends IndexPage {
+public class UserInterfaceTestHelper extends UserInterface {
 
     private boolean isPerformActionCalled;
     private boolean isDisplayWelcomeMessageCalled;
@@ -12,11 +13,11 @@ public class IndexPageTestHelper extends IndexPage {
     private final String DEFAULT_EXIT_VALUE = "4";
 
     @Override
-    public String getInputFromUser() {
+    public String getInputFromUser(InputReader inputReader) {
         return DEFAULT_EXIT_VALUE;
     }
 
-    public IndexPageTestHelper(OutputWriter outputWriter, BookInventory bookInventory) {
+    public UserInterfaceTestHelper(OutputWriter outputWriter, BookInventory bookInventory) {
         super(outputWriter, bookInventory);
     }
 

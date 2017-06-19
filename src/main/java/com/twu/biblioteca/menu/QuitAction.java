@@ -1,15 +1,8 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.IndexPage;
-import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.UserInterface;
 
 public class QuitAction implements Action {
-
-    private final OutputWriter outputWriter;
-
-    QuitAction(OutputWriter outputWriter) {
-        this.outputWriter = outputWriter;
-    }
 
     @Override
     public String toString() {
@@ -17,7 +10,7 @@ public class QuitAction implements Action {
     }
 
     @Override
-    public void performAction(IndexPage indexPage) {
-        outputWriter.write("Thank you for using Bangalore Public Library !!");
+    public void performAction(UserInterface userInterface) {
+        userInterface.write("Thank you for using Bangalore Public Library !!");
     }
 }

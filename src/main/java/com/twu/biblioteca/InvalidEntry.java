@@ -17,7 +17,7 @@ public class InvalidEntry implements Action {
     }
 
     @Override
-    public void performAction(IndexPage indexPage) {
+    public void performAction(UserInterface userInterface) {
         outputWriter.write(invalidMessage);
     }
 }

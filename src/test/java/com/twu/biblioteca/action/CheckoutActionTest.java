@@ -1,9 +1,9 @@
 package com.twu.biblioteca.action;
 
-import com.twu.biblioteca.books.Book;
-import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.UserInterface;
+import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.helpers.InputReaderTestHelper;
 import com.twu.biblioteca.menu.CheckoutAction;
@@ -19,9 +19,9 @@ import static org.junit.Assert.assertEquals;
 public class CheckoutActionTest {
 
     private OutputWriter outputWriter;
-    private IndexPage indexPage;
-    private InputReader inputReader;
+    private UserInterface indexPage;
     private BookInventory bookInventory;
+    private InputReader inputReader;
 
     @Before
     public void setUp() {
@@ -29,18 +29,18 @@ public class CheckoutActionTest {
         outputWriter = new OutputWriter(stringWriter);
         inputReader = new InputReaderTestHelper("The Alchemist");
         bookInventory = new BookInventory();
-        indexPage = new IndexPage(outputWriter, bookInventory);
+        indexPage = new UserInterface(outputWriter, bookInventory);
     }
 
     @Test
     public void shouldReturnOption() {
-        CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
+        CheckoutAction checkoutAction = new CheckoutAction();
         assertEquals("Checkout Book", checkoutAction.toString());
     }
 
     @Test
     public void shouldGetBookNameFromUser() {
-        CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
+        CheckoutAction checkoutAction = new CheckoutAction();
         String bookName = checkoutAction.getBookNameFromUser();
         String expectedBookName = "The Alchemist";
         assertEquals(expectedBookName, bookName);
@@ -48,8 +48,8 @@ public class CheckoutActionTest {
 
     @Test
     public void shouldNotDisplayCheckedOutBook() {
-        CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
-        checkoutAction.performAction(new IndexPage(outputWriter, bookInventory));
+        CheckoutAction checkoutAction = new CheckoutAction();
+        checkoutAction.performAction(new UserInterface(outputWriter, bookInventory));
         assertEquals(getExpectedListOfBooks(), indexPage.getAvailableBooks());
     }
 

@@ -11,7 +11,7 @@ public class App {
         OutputStreamWriter writer = new OutputStreamWriter(System.out);
         OutputWriter outputWriter = new OutputWriter(writer);
         BookInventory bookInventory = new BookInventory();
-        IndexPage indexPage = new IndexPage(outputWriter, bookInventory);
+        UserInterface indexPage = new UserInterface(outputWriter, bookInventory);
 
         Workflow workflow = new Workflow(indexPage);
         workflow.start();

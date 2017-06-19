@@ -2,9 +2,9 @@ package com.twu.biblioteca;
 
 class Workflow {
 
-    private final IndexPage indexPage;
+    private final UserInterface indexPage;
 
-    Workflow(IndexPage indexPage) {
+    Workflow(UserInterface indexPage) {
         this.indexPage = indexPage;
     }
 

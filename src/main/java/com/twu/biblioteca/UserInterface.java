@@ -1,14 +1,14 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.menu.Action;
-import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.menu.Menu;
 
 import java.util.List;
 import java.util.Map;
 
-public class IndexPage {
+public class UserInterface {
 
     private final OutputWriter outputWriter;
     private final BookInventory bookInventory;
@@ -16,10 +16,10 @@ public class IndexPage {
     private Map<String, Action> menuItems;
     private Menu mainMenu;
 
-    public IndexPage(OutputWriter outputWriter, BookInventory bookInventory) {
+    public UserInterface(OutputWriter outputWriter, BookInventory bookInventory) {
         this.outputWriter = outputWriter;
         this.bookInventory = bookInventory;
-        mainMenu = new Menu(outputWriter, new InputReader());
+        mainMenu = new Menu();
     }
 
     public void displayWelcomeMessage() {
@@ -44,10 +44,14 @@ public class IndexPage {
         return inputReader.readInput();
     }
 
+    public void write(String output) {
+        outputWriter.write(output);
+    }
+
     public void performAction(String input) {
         menuItems = mainMenu.getMenuItems();
         Action action = menuItems.getOrDefault(input, new InvalidEntry(outputWriter));
-        action.performAction(new IndexPage(outputWriter,bookInventory));
+        action.performAction(new UserInterface(outputWriter, bookInventory));
     }
 
     public boolean checkoutBook(String bookName) {

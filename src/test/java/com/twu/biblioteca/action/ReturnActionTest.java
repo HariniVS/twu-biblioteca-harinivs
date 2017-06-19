@@ -1,12 +1,13 @@
 package com.twu.biblioteca.action;
 
-import com.twu.biblioteca.books.Book;
-import com.twu.biblioteca.IndexPage;
+import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.UserInterface;
+import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.books.BookInventory;
-import com.twu.biblioteca.menu.ReturnAction;
 import com.twu.biblioteca.helpers.InputReaderTestHelper;
 import com.twu.biblioteca.menu.CheckoutAction;
+import com.twu.biblioteca.menu.ReturnAction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,31 +20,30 @@ import static org.junit.Assert.assertEquals;
 public class ReturnActionTest {
 
     private OutputWriter outputWriter;
-    private InputReaderTestHelper inputReader;
-    private IndexPage indexPage;
+    private UserInterface indexPage;
     private BookInventory bookInventory;
 
     @Before
     public void setUp() {
         StringWriter stringWriter = new StringWriter();
         outputWriter = new OutputWriter(stringWriter);
-        inputReader = new InputReaderTestHelper("The Alchemist\nThe Alchemist");
+        InputReader inputReader = new InputReaderTestHelper("The Alchemist");
         bookInventory = new BookInventory();
-        indexPage = new IndexPage(outputWriter, bookInventory);
+        indexPage = new UserInterface(outputWriter, bookInventory);
     }
 
     @Test
     public void shouldReturnOption() {
-        ReturnAction returnAction = new ReturnAction(outputWriter, inputReader);
+        ReturnAction returnAction = new ReturnAction();
         assertEquals("Return Book", returnAction.toString());
     }
 
     @Test
     public void shouldDisplayAReturnedBook() {
-        CheckoutAction checkoutAction = new CheckoutAction(outputWriter, inputReader);
-        checkoutAction.performAction(new IndexPage(outputWriter, bookInventory));
-        ReturnAction returnAction = new ReturnAction(outputWriter, inputReader);
-        returnAction.performAction(new IndexPage(outputWriter, bookInventory));
+        CheckoutAction checkoutAction = new CheckoutAction();
+        checkoutAction.performAction(new UserInterface(outputWriter, bookInventory));
+        ReturnAction returnAction = new ReturnAction();
+        returnAction.performAction(new UserInterface(outputWriter, bookInventory));
         assertEquals(getExpectedListOfBooks(), indexPage.getAvailableBooks());
     }
 
