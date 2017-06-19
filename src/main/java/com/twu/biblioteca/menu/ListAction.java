@@ -1,8 +1,8 @@
 package com.twu.biblioteca.menu;
 
-import com.twu.biblioteca.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.books.Book;
 
 import java.util.List;
 

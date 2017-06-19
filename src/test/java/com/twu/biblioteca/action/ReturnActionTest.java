@@ -1,6 +1,6 @@
 package com.twu.biblioteca.action;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.IndexPage;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.menu.ReturnAction;

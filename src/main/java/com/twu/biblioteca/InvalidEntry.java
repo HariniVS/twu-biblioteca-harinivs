@@ -7,7 +7,7 @@ public class InvalidEntry implements Action {
     private OutputWriter outputWriter;
     private String invalidMessage = "Select a valid option!";
 
-    InvalidEntry(OutputWriter outputWriter) {
+    public InvalidEntry(OutputWriter outputWriter) {
         this.outputWriter = outputWriter;
     }
 

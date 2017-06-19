@@ -1,7 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.books;
 
+import com.twu.biblioteca.InputReader;
+import com.twu.biblioteca.InvalidEntry;
+import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.menu.Action;
 import com.twu.biblioteca.menu.ListAction;
+import com.twu.biblioteca.menu.Menu;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,11 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.books;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-class BookInventory {
+public class BookInventory {
 
     private Map<Book, Boolean> bookAvailability = new LinkedHashMap<>();
 
@@ -26,7 +26,7 @@ class BookInventory {
         return null;
     }
 
-    List<Book> getAvailableBooks() {
+    public List<Book> getAvailableBooks() {
         List<Book> availableBooks = new ArrayList<>();
         bookAvailability = getAvailabilityStatusOfBooks();
         for (Map.Entry<Book, Boolean> book : bookAvailability.entrySet()) {
@@ -37,7 +37,7 @@ class BookInventory {
         return availableBooks;
     }
 
-    boolean checkoutBook(String bookName) {
+    public boolean checkoutBook(String bookName) {
         for (Book book : getAvailableBooks()) {
             if (bookName.equals(book.getName())) {
                 bookAvailability.put(book, false);
@@ -47,7 +47,7 @@ class BookInventory {
         return false;
     }
 
-    boolean returnBook(String bookName) {
+    public boolean returnBook(String bookName) {
         Book book = getBook(bookName);
         bookAvailability = getAvailabilityStatusOfBooks();
         if (bookAvailability.containsKey(book) && (!bookAvailability.get(book))) {

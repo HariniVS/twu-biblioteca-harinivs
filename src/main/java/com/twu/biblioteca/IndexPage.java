@@ -1,6 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.menu.Action;
+import com.twu.biblioteca.books.Book;
+import com.twu.biblioteca.menu.Menu;
 
 import java.util.List;
 import java.util.Map;
