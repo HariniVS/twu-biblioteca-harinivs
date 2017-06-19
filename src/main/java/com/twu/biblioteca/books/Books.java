@@ -5,21 +5,21 @@ import java.util.List;
 
 class Books {
 
-    private List<Book> listOfBooksInstance;
+    private List<Book> books;
 
     Books() {
         addBooks();
     }
 
     private void addBooks() {
-        listOfBooksInstance = new LinkedList<>();
-        listOfBooksInstance.add(new Book("The Fountainhead", "Ayn Rand", 1943));
-        listOfBooksInstance.add(new Book("The Alchemist", "Paulo Coelho", 1988));
-        listOfBooksInstance.add(new Book("The Stars Shine Down", "Sidney Sheldon", 1992));
+        books = new LinkedList<>();
+        books.add(new Book("The Fountainhead", "Ayn Rand", 1943));
+        books.add(new Book("The Alchemist", "Paulo Coelho", 1988));
+        books.add(new Book("The Stars Shine Down", "Sidney Sheldon", 1992));
     }
 
 
     public List<Book> getBooks() {
-        return listOfBooksInstance;
+        return books;
     }
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.user;
 
-public class User {
+class User {
 
     private final String address;
     private final int phoneNumber;
@@ -22,11 +22,11 @@ public class User {
         return emailId;
     }
 
-    public String getAddress() {
+    String getAddress() {
         return address;
     }
 
-    public int getPhoneNumber() {
+    int getPhoneNumber() {
         return phoneNumber;
     }
 }
