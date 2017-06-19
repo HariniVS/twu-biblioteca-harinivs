@@ -45,4 +45,12 @@ public class UserTest {
 
         assertEquals(userId, user.getUserId());
     }
+
+    @Test
+    public void assertWhetherTwoUsersAreEqual() {
+        User userOne = new User("User 1","user1@gmail.com","Koramangala",1234, "123-1234");
+        User userTwo = new User("User 1","user1@gmail.com","Koramangala",1234, "123-1234");
+
+        assertEquals(userOne, userTwo);
+    }
 }

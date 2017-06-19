@@ -4,19 +4,25 @@ class User {
 
     private final String address;
     private final int phoneNumber;
-    private final String userId;
-    private String userName;
-    private String emailId;
 
     @Override
     public String toString() {
         return userId;
     }
 
+    private final String userId;
+    private String userName;
+    private String emailId;
+
     @Override
     public boolean equals(Object obj) {
         User user = (User) obj;
-        return user.getUserId().equals(userId);
+        return isEqual(user);
+    }
+
+    private boolean isEqual(User user) {
+        return user.getUserName().equals(userName) && user.getEmailId().equals(emailId) && user
+                .getUserId().equals(userId);
     }
 
     User(String userName, String emailId, String address, int phoneNumber, String userId) {
