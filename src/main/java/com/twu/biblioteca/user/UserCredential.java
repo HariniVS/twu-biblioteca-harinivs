@@ -18,8 +18,7 @@ class UserCredential {
     private void addCredentials() {
         userCredentials = new LinkedHashMap<>();
         final User user = new User("User 1", "user1@gmail.com", "Koramangala", 1234, "123-1234");
-        userCredentials.put(user,
-                new Password("1234"));
+        userCredentials.put(user, new Password("1234"));
     }
 
     public LinkedHashMap<User, Password> getUserCredentials() {
