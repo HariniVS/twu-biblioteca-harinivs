@@ -4,10 +4,12 @@ import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.item.Item;
 import com.twu.biblioteca.movie.Movie;
 import com.twu.biblioteca.user.User;
-import com.twu.biblioteca.user.UserSession;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -49,7 +51,10 @@ public class RepositoryTest {
     @Test
     public void shouldCheckoutBook() {
         Repository repository = new Repository();
-        repository.checkoutItem("The Alchemist", "Book", UserSession.getCurrentUser());
+        final User user = new User("User 1", "user1@gmail.com",
+                "Koramangala", 1234, "123-1234");
+
+        repository.checkoutItem("The Alchemist", "Book", user);
         final List<Item> books = repository.getItems("Book");
         List<Item> expectedBookList = new ArrayList<>();
 
@@ -59,7 +64,10 @@ public class RepositoryTest {
     @Test
     public void shouldCheckoutMovie() {
         Repository repository = new Repository();
-        repository.checkoutItem("3 Idiots", "Movie");
+        final User user = new User("User 1", "user1@gmail.com",
+                "Koramangala", 1234, "123-1234");
+
+        repository.checkoutItem("3 Idiots", "Movie", user);
         final List<Item> movies = repository.getItems("Movie");
         List<Item> expectedMovieList = new ArrayList<>();
 
@@ -69,15 +77,14 @@ public class RepositoryTest {
     @Test
     public void shouldReturnCheckedOutMovies() {
         Repository repository = new Repository();
+
         final User user = new User("User 1", "user1@gmail.com",
                 "Koramangala", 1234, "123-1234");
-        final UserSession session = new UserSession();
-        session.setCurrentUser(user);
-        repository.checkoutItem("3 Idiots", "Movie");
+        repository.checkoutItem("3 Idiots", "Movie", user);
 
-        Map<Movie, User> expectedCheckedOutMovies  = new LinkedHashMap<>();
+        Map<Movie, User> expectedCheckedOutMovies = new LinkedHashMap<>();
         expectedCheckedOutMovies.put(new Movie("3 Idiots", 2011, "Raj Kumar", 9), user);
-        assertEquals(expectedCheckedOutMovies.toString(),repository.getCheckedOutItem()
+        assertEquals(expectedCheckedOutMovies.toString(), repository.getCheckedOutItem()
                 .toString());
     }
 
@@ -86,11 +93,10 @@ public class RepositoryTest {
         Repository repository = new Repository();
         final User user = new User("User 1", "user1@gmail.com",
                 "Koramangala", 1234, "123-1234");
-        final UserSession session = new UserSession();
-        session.setCurrentUser(user);
-        repository.checkoutItem("The Alchemist", "Book");
 
-        Map<Book, User> expectedCheckedOutBooks  = new LinkedHashMap<>();
+        repository.checkoutItem("The Alchemist", "Book", user);
+
+        Map<Book, User> expectedCheckedOutBooks = new LinkedHashMap<>();
         expectedCheckedOutBooks.put(new Book("The Alchemist", "Paulo Coelho", 1988), user);
         assertEquals(expectedCheckedOutBooks.toString(), repository.getCheckedOutItem()
                 .toString());
@@ -101,13 +107,12 @@ public class RepositoryTest {
         Repository repository = new Repository();
         final User user = new User("User 1", "user1@gmail.com",
                 "Koramangala", 1234, "123-1234");
-        final UserSession session = new UserSession();
-        session.setCurrentUser(user);
-        repository.checkoutItem("The Alchemist", "Book");
+
+        repository.checkoutItem("The Alchemist", "Book", user);
         repository.returnItem("The Alchemist", "Book");
 
 
-        List<Book> expectedListOfBooks  = new ArrayList<>();
+        List<Book> expectedListOfBooks = new ArrayList<>();
         expectedListOfBooks.add(new Book("The Alchemist", "Paulo Coelho", 1988));
         assertEquals(expectedListOfBooks, repository.getItems("Book"));
     }

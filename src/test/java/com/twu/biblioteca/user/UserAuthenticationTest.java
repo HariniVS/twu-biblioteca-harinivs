@@ -1,6 +1,5 @@
 package com.twu.biblioteca.user;
 
-import com.twu.biblioteca.MenuFacilitator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;

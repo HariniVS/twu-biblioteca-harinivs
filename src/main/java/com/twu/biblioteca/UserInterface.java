@@ -7,13 +7,13 @@ public class UserInterface {
 
     private final OutputWriter outputWriter;
     private InputReader inputReader = new InputReader();
-    private MenuFacilitator menuFacilitator;
+    private MenuCreator menuCreator;
     private Menu menu;
 
     public UserInterface(OutputWriter outputWriter, InputReader inputReader, Repository repository, UserAuthentication userAuthentication) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
-        menuFacilitator = new MenuFacilitator(outputWriter, inputReader, repository, userAuthentication);
+        menuCreator = new MenuCreator(outputWriter, inputReader, repository, userAuthentication);
     }
 
     public void displayWelcomeMessage() {
@@ -34,7 +34,7 @@ public class UserInterface {
     }
 
     public void displayMenu() {
-        menu = menuFacilitator.getMenu();
+        menu = menuCreator.getMenu();
         menu.displayMenu();
     }
 

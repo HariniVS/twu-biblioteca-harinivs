@@ -4,7 +4,6 @@ import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.user.UserAuthentication;
-import com.twu.biblioteca.user.UserSession;
 
 public class CheckoutItem implements Action {
     private final Repository repository;
@@ -27,10 +26,10 @@ public class CheckoutItem implements Action {
     @Override
     public void performAction() {
         if (repository.checkoutItem(getBookNameFromUser(), itemName, userAuthentication.getCurrentUser())) {
-            outputWriter.write("Thank you! Enjoy the "+itemName);
+            outputWriter.write("Thank you! Enjoy the " + itemName);
             return;
         }
-        outputWriter.write("That "+itemName+"is not available.");
+        outputWriter.write("That " + itemName + "is not available.");
     }
 
     public String getBookNameFromUser() {

@@ -25,7 +25,7 @@ public class UserMenu extends Menu {
         userMenu.put("4", new CheckoutItem(repository, outputWriter, MOVIE_ITEM, userAuthentication));
         userMenu.put("5", new ReturnItem(repository, outputWriter, BOOK_ITEM));
         userMenu.put("6", new ReturnItem(repository, outputWriter, MOVIE_ITEM));
-        userMenu.put("7", new UserInformation(outputWriter));
+        userMenu.put("7", new UserInformation(outputWriter, userAuthentication));
         userMenu.put("8", new Logout(userAuthentication));
         userMenu.put("9", new Quit(outputWriter));
     }
