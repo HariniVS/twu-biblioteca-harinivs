@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.user.UserAuthentication;
 import org.junit.Test;
 
 import java.io.StringWriter;
@@ -20,8 +21,9 @@ public class UserInterfaceTest {
         outputWriter = new OutputWriter(stringWriter);
         InputReader inputReader = new InputReader();
         Repository repository = new Repository();
-        userInterface = new UserInterface(outputWriter, inputReader, repository);
-        userInterface.displayMenu(userType);
+        UserAuthentication userAuthentication = new UserAuthentication();
+        userInterface = new UserInterface(outputWriter, inputReader, repository, userAuthentication);
+        userInterface.displayMenu();
         final StringBuffer stringBuffer = stringWriter.getBuffer();
 
         String expectedMenu =

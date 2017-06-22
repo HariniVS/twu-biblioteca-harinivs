@@ -1,27 +1,19 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.menu.LibrarianMenu;
-import com.twu.biblioteca.menu.MainMenu;
 import com.twu.biblioteca.menu.Menu;
-import com.twu.biblioteca.menu.UserMenu;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.twu.biblioteca.user.UserAuthentication;
 
 public class UserInterface {
 
     private final OutputWriter outputWriter;
-    private Map<String, Menu> menuMap;
     private InputReader inputReader = new InputReader();
+    private MenuFacilitator menuFacilitator;
+    private Menu menu;
 
-    public UserInterface(OutputWriter outputWriter, InputReader inputReader, Repository repository) {
+    public UserInterface(OutputWriter outputWriter, InputReader inputReader, Repository repository, UserAuthentication userAuthentication) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
-
-        menuMap = new LinkedHashMap<>();
-        menuMap.put("General", new MainMenu(repository, outputWriter, inputReader));
-        menuMap.put("Customer", new UserMenu(repository, outputWriter, inputReader));
-        menuMap.put("Librarian", new LibrarianMenu(repository, outputWriter, inputReader));
+        menuFacilitator = new MenuFacilitator(outputWriter, inputReader, repository, userAuthentication);
     }
 
     public void displayWelcomeMessage() {
@@ -37,13 +29,12 @@ public class UserInterface {
         outputWriter.write(output);
     }
 
-    public void performAction(String input, String userType) {
-        final Menu menu = this.menuMap.get(userType);
+    public void performAction(String input) {
         menu.performAction(input);
     }
 
-    public void displayMenu(String userType) {
-        final Menu menu = this.menuMap.get(userType);
+    public void displayMenu() {
+        menu = menuFacilitator.getMenu();
         menu.displayMenu();
     }
 

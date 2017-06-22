@@ -4,8 +4,7 @@ import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.UserInterface;
 import com.twu.biblioteca.Repository;
-
-import java.io.StringWriter;
+import com.twu.biblioteca.user.UserAuthentication;
 
 public class UserInterfaceTestHelper extends UserInterface {
 
@@ -14,8 +13,9 @@ public class UserInterfaceTestHelper extends UserInterface {
     private boolean isDisplayMenuToUserCalled;
     private final String DEFAULT_EXIT_VALUE = "4";
 
-    public UserInterfaceTestHelper(OutputWriter outputWriter, InputReader inputReader, Repository repository) {
-        super(outputWriter, inputReader, repository);
+    public UserInterfaceTestHelper(OutputWriter outputWriter, InputReader inputReader, Repository repository,
+                                   UserAuthentication userAuthentication) {
+        super(outputWriter, inputReader, repository, userAuthentication);
     }
 
     @Override
@@ -30,14 +30,14 @@ public class UserInterfaceTestHelper extends UserInterface {
     }
 
     @Override
-    public void displayMenu(String userType) {
-        super.displayMenu(userType);
+    public void displayMenu() {
+        super.displayMenu();
         isDisplayMenuToUserCalled = true;
     }
 
     @Override
-    public void performAction(String input, String inputType) {
-        super.performAction(input, inputType);
+    public void performAction(String input) {
+        super.performAction(input);
         isPerformActionCalled = true;
     }
 

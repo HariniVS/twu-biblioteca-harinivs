@@ -4,7 +4,6 @@ import com.twu.biblioteca.books.Book;
 import com.twu.biblioteca.item.Item;
 import com.twu.biblioteca.movie.Movie;
 import com.twu.biblioteca.user.User;
-import com.twu.biblioteca.user.UserSession;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -39,12 +38,12 @@ public class Repository {
         return itemList;
     }
 
-    public boolean checkoutItem(String itemNameFromUser, String itemName) {
+    public boolean checkoutItem(String itemNameFromUser, String itemName, User currentUser) {
         final List<Item> items = getItems(itemName);
         final Item item = getItem(itemNameFromUser, items);
         if (item != null) {
             availableItems.remove(item);
-            checkedOutItems.put(item, UserSession.getCurrentUser());
+            checkedOutItems.put(item, currentUser);
             return true;
         }
         return false;

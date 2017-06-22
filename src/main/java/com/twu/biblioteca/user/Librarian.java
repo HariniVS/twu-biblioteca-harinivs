@@ -1,6 +1,6 @@
 package com.twu.biblioteca.user;
 
- class Librarian extends User {
+ public class Librarian extends User {
 
      private final String librarianId;
 

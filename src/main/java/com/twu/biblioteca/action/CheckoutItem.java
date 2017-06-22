@@ -3,16 +3,20 @@ package com.twu.biblioteca.action;
 import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.Repository;
+import com.twu.biblioteca.user.UserAuthentication;
+import com.twu.biblioteca.user.UserSession;
 
 public class CheckoutItem implements Action {
     private final Repository repository;
     private final OutputWriter outputWriter;
     private final String itemName;
+    private UserAuthentication userAuthentication;
 
-    public CheckoutItem(Repository repository, OutputWriter outputWriter, String itemName) {
+    public CheckoutItem(Repository repository, OutputWriter outputWriter, String itemName, UserAuthentication userAuthentication) {
         this.repository = repository;
         this.outputWriter = outputWriter;
         this.itemName = itemName;
+        this.userAuthentication = userAuthentication;
     }
 
     @Override
@@ -22,7 +26,7 @@ public class CheckoutItem implements Action {
 
     @Override
     public void performAction() {
-        if (repository.checkoutItem(getBookNameFromUser(), itemName)) {
+        if (repository.checkoutItem(getBookNameFromUser(), itemName, userAuthentication.getCurrentUser())) {
             outputWriter.write("Thank you! Enjoy the "+itemName);
             return;
         }

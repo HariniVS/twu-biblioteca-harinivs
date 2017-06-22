@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.helpers.UserInterfaceTestHelper;
+import com.twu.biblioteca.user.UserAuthentication;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,8 +21,10 @@ public class WorkFlowTest {
         OutputWriter outputWriter = new OutputWriter(writer);
         InputReader inputReader = new InputReader();
         Repository repository = new Repository();
+        UserAuthentication userAuthentication = new UserAuthentication();
 
-        userInterfaceTestHelper = new UserInterfaceTestHelper(outputWriter, inputReader, repository);
+        userInterfaceTestHelper = new UserInterfaceTestHelper(outputWriter, inputReader,
+                repository, userAuthentication);
         workflow = new Workflow(userInterfaceTestHelper);
     }
 

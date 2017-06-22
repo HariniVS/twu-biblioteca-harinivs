@@ -4,7 +4,7 @@ import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.action.Action;
-import com.twu.biblioteca.action.ListItems;
+import com.twu.biblioteca.user.UserAuthentication;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +21,7 @@ public class LibrarianMenuTest {
     private Repository repository;
     private InputReader inputReader;
     private OutputWriter outputWriter;
+    private UserAuthentication userAuthentication;
 
     @Before
     public void setUp() {
@@ -28,11 +29,13 @@ public class LibrarianMenuTest {
         outputWriter = new OutputWriter(writer);
         inputReader = new InputReader();
         repository = new Repository();
+        userAuthentication = new UserAuthentication();
     }
 
     @Test
     public void shouldDisplayMenu() {
-        LibrarianMenu menu = new LibrarianMenu(repository, outputWriter, inputReader);
+        LibrarianMenu menu = new LibrarianMenu(repository, outputWriter, inputReader,
+                userAuthentication);
         menu.displayMenu();
 
         String expectedMenu =
@@ -46,9 +49,10 @@ public class LibrarianMenuTest {
 
     @Test
     public void shouldCallPerformAction() {
-        LibrarianMenuTestHelper menu = new LibrarianMenuTestHelper(repository, outputWriter, inputReader);
+        LibrarianMenuTestHelper menu = new LibrarianMenuTestHelper(repository, outputWriter,
+                inputReader, new UserAuthentication());
         Map<String, Action> menuMap = new LinkedHashMap<>();
-        menuMap.put("4", new Logout());
+        menuMap.put("4", new Logout(userAuthentication));
         menu.displayMenu(menuMap);
         menu.performAction("4");
 

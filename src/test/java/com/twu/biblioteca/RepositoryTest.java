@@ -49,7 +49,7 @@ public class RepositoryTest {
     @Test
     public void shouldCheckoutBook() {
         Repository repository = new Repository();
-        repository.checkoutItem("The Alchemist", "Book");
+        repository.checkoutItem("The Alchemist", "Book", UserSession.getCurrentUser());
         final List<Item> books = repository.getItems("Book");
         List<Item> expectedBookList = new ArrayList<>();
 

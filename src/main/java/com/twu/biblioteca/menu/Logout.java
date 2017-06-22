@@ -1,9 +1,17 @@
 package com.twu.biblioteca.menu;
 
 import com.twu.biblioteca.action.Action;
+import com.twu.biblioteca.user.UserAuthentication;
 import com.twu.biblioteca.user.UserSession;
 
 public class Logout implements Action {
+
+
+    private UserAuthentication userAuthentication;
+
+    Logout(UserAuthentication userAuthentication) {
+        this.userAuthentication = userAuthentication;
+    }
 
     @Override
     public String toString() {
@@ -12,7 +20,6 @@ public class Logout implements Action {
 
     @Override
     public void performAction() {
-        UserSession.setUserType("General");
-        UserSession.setCurrentUser(null);
+        userAuthentication.logout();
     }
 }

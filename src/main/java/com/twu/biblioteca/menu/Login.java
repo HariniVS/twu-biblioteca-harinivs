@@ -14,10 +14,10 @@ public class Login implements Action {
     private final OutputWriter outputWriter;
     private UserAuthentication userAuthentication;
 
-    public Login(OutputWriter outputWriter, InputReader inputReader) {
+    public Login(OutputWriter outputWriter, InputReader inputReader, UserAuthentication userAuthentication) {
         this.outputWriter = outputWriter;
         this.inputReader = inputReader;
-        userAuthentication = new UserAuthentication();
+        this.userAuthentication = userAuthentication;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Login implements Action {
     @Override
     public void performAction() {
         readUserCredential();
-        if (userAuthentication.validateUser(userId, new Password(password))) {
+        if (userAuthentication.authenticate(userId, new Password(password))) {
             outputWriter.write("Login Successful.");
         } else {
             outputWriter.write("Invalid User Id or Password.");

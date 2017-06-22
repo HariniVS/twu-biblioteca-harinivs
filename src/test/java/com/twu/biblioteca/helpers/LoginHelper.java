@@ -3,6 +3,7 @@ package com.twu.biblioteca.helpers;
 import com.twu.biblioteca.InputReader;
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.menu.Login;
+import com.twu.biblioteca.user.UserAuthentication;
 
 public class LoginHelper extends Login{
 
@@ -12,7 +13,7 @@ public class LoginHelper extends Login{
     private String password;
 
     public LoginHelper(OutputWriter outputWriter, InputReader inputReader) {
-        super(outputWriter, inputReader);
+        super(outputWriter, inputReader, new UserAuthentication());
         this.inputReader = inputReader;
     }
 

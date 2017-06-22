@@ -1,5 +1,6 @@
 package com.twu.biblioteca.user;
 
+import com.twu.biblioteca.MenuFacilitator;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -14,7 +15,7 @@ public class UserAuthenticationTest {
         Password password = new Password("1234");
 
         UserAuthentication userAuthentication = new UserAuthentication();
-        assertTrue(userAuthentication.validateUser(userId, password));
+        assertTrue(userAuthentication.authenticate(userId, password));
     }
 
     @Test
@@ -24,7 +25,7 @@ public class UserAuthenticationTest {
         Password password = new Password("1235");
 
         UserAuthentication userAuthentication = new UserAuthentication();
-        assertFalse(userAuthentication.validateUser(userId, password));
+        assertFalse(userAuthentication.authenticate(userId, password));
     }
 
     @Test
@@ -34,9 +35,8 @@ public class UserAuthenticationTest {
         Password password = new Password("4567");
 
         UserAuthentication userAuthentication = new UserAuthentication();
-        userAuthentication.validateUser(userId, password);
-        System.out.println(new UserSession().getUserType());
+        userAuthentication.authenticate(userId, password);
 
-        assertTrue(new UserSession().getUserType().equals("Librarian"));
+        assertTrue(userAuthentication.getCurrentUser() instanceof Librarian);
     }
 }

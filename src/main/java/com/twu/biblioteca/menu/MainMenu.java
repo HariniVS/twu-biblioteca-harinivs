@@ -6,6 +6,7 @@ import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.action.Action;
 import com.twu.biblioteca.action.ListItems;
 import com.twu.biblioteca.action.Quit;
+import com.twu.biblioteca.user.UserAuthentication;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,13 +17,13 @@ public class MainMenu extends Menu{
     private final String BOOK_ITEM = "Book";
     private final String MOVIE_ITEM = "Movie";
 
-    public MainMenu(Repository repository, OutputWriter outputWriter, InputReader inputReader) {
+    public MainMenu(Repository repository, OutputWriter outputWriter, InputReader inputReader, UserAuthentication userAuthentication) {
         super(repository, outputWriter, inputReader);
 
         mainMenu = new LinkedHashMap<>();
         mainMenu.put("1", new ListItems(repository, outputWriter, BOOK_ITEM));
         mainMenu.put("2", new ListItems(repository, outputWriter, MOVIE_ITEM));
-        mainMenu.put("3", new Login(outputWriter, inputReader));
+        mainMenu.put("3", new Login(outputWriter, inputReader, userAuthentication));
         mainMenu.put("4", new Quit(outputWriter));
     }
 
