@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.books.BookInventory;
 import com.twu.biblioteca.helpers.UserInterfaceTestHelper;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +18,10 @@ public class WorkFlowTest {
     public void setUp() {
         OutputStreamWriter writer = new OutputStreamWriter(System.out);
         OutputWriter outputWriter = new OutputWriter(writer);
-        BookInventory bookInventory = new BookInventory();
-        userInterfaceTestHelper = new UserInterfaceTestHelper(outputWriter, bookInventory);
+        InputReader inputReader = new InputReader();
+        Repository repository = new Repository();
+
+        userInterfaceTestHelper = new UserInterfaceTestHelper(outputWriter, inputReader, repository);
         workflow = new Workflow(userInterfaceTestHelper);
     }
 

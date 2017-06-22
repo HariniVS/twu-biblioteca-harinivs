@@ -40,17 +40,16 @@ public class RepositoryTest {
     public void shouldReturnAllMovies() {
         Repository repository = new Repository();
         final List<Item> movies = repository.getItems("Movie");
-        List<Item> expectedBookList = new ArrayList<>();
-        expectedBookList.add(new Movie("3 Idiots", 2011, "Raj Kumar", 9));
+        List<Item> expectedMovieList = new ArrayList<>();
+        expectedMovieList.add(new Movie("3 Idiots", 2011, "Raj Kumar", 9));
 
-        assertEquals(expectedBookList, movies);
+        assertEquals(expectedMovieList, movies);
     }
 
     @Test
     public void shouldCheckoutBook() {
         Repository repository = new Repository();
-        repository.checkoutItem("The Alchemist", "Book", new User("User 1","user1@gmail.com",
-                "Koramangala",1234, "123-1234"));
+        repository.checkoutItem("The Alchemist", "Book");
         final List<Item> books = repository.getItems("Book");
         List<Item> expectedBookList = new ArrayList<>();
 
@@ -60,8 +59,7 @@ public class RepositoryTest {
     @Test
     public void shouldCheckoutMovie() {
         Repository repository = new Repository();
-        repository.checkoutItem("3 Idiots", "Movie", new User("User 1","user1@gmail.com",
-                "Koramangala",1234, "123-1234"));
+        repository.checkoutItem("3 Idiots", "Movie");
         final List<Item> movies = repository.getItems("Movie");
         List<Item> expectedMovieList = new ArrayList<>();
 
@@ -71,11 +69,16 @@ public class RepositoryTest {
     @Test
     public void shouldReturnCheckedOutMovies() {
         Repository repository = new Repository();
-        repository.checkoutItem("3 Idiots", "Movie", new User("User 1","user1@gmail.com",
-                "Koramangala",1234, "123-1234"));
+        final User user = new User("User 1", "user1@gmail.com",
+                "Koramangala", 1234, "123-1234");
+        final UserSession session = new UserSession();
+        session.setCurrentUser(user);
+        repository.checkoutItem("3 Idiots", "Movie");
 
-        Set<Book> expectedCheckedOutBooks  = new HashSet<>();
-        assertEquals(expectedCheckedOutBooks,repository.getCheckedOutBooks().keySet());
+        Map<Movie, User> expectedCheckedOutMovies  = new LinkedHashMap<>();
+        expectedCheckedOutMovies.put(new Movie("3 Idiots", 2011, "Raj Kumar", 9), user);
+        assertEquals(expectedCheckedOutMovies.toString(),repository.getCheckedOutItem()
+                .toString());
     }
 
     @Test
@@ -83,13 +86,14 @@ public class RepositoryTest {
         Repository repository = new Repository();
         final User user = new User("User 1", "user1@gmail.com",
                 "Koramangala", 1234, "123-1234");
-        UserSession.currentUser = user;
-        repository.checkoutItem("The Alchemist", "Book", user);
-
+        final UserSession session = new UserSession();
+        session.setCurrentUser(user);
+        repository.checkoutItem("The Alchemist", "Book");
 
         Map<Book, User> expectedCheckedOutBooks  = new LinkedHashMap<>();
         expectedCheckedOutBooks.put(new Book("The Alchemist", "Paulo Coelho", 1988), user);
-        assertEquals(expectedCheckedOutBooks.toString(), repository.getCheckedOutBooks().toString());
+        assertEquals(expectedCheckedOutBooks.toString(), repository.getCheckedOutItem()
+                .toString());
     }
 
     @Test
@@ -97,9 +101,10 @@ public class RepositoryTest {
         Repository repository = new Repository();
         final User user = new User("User 1", "user1@gmail.com",
                 "Koramangala", 1234, "123-1234");
-        UserSession.currentUser = user;
-        repository.checkoutItem("The Alchemist", "Book", user);
-        repository.returnItem("The Alchemist", "Book", user);
+        final UserSession session = new UserSession();
+        session.setCurrentUser(user);
+        repository.checkoutItem("The Alchemist", "Book");
+        repository.returnItem("The Alchemist", "Book");
 
 
         List<Book> expectedListOfBooks  = new ArrayList<>();

@@ -1,29 +1,31 @@
 package com.twu.biblioteca.user;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
-class UserAuthentication {
-
-    private final String userId;
-    private final Password password;
+public class UserAuthentication {
 
     private UserCredential userCredential = new UserCredential();
+    private String librarian = "Librarian";
+    private String customer = "Customer";
 
-    UserAuthentication(String userId, Password password) {
-        this.userId = userId;
-        this.password = password;
+    public boolean validateUser(String userId, Password password) {
+        final Map<User, Password> userCredentials = userCredential.getUserCredentials();
+        for (Map.Entry<User, Password> userDetail : userCredentials.entrySet()) {
+            if (compareCredentials(userDetail.getKey(), userDetail.getValue(), userId, password))
+                return true;
+        }
+        return false;
     }
 
-     boolean validateUser() {
-        final LinkedHashMap<User, Password> userCredentials = userCredential.getUserCredentials();
-         for (Map.Entry<User, Password> userDetail : userCredentials.entrySet() ) {
-             final User user = userDetail.getKey();
-             final Password password = userDetail.getValue();
-             if (user.getUserId().equals(userId) && password.equals(this.password)) {
-                 return true;
-             }
-         }
-         return false;
-     }
+    private boolean compareCredentials(User user, Password inputPassword, String userId, Password password) {
+        if (user.getUserId().equals(userId) && password.equals(inputPassword)) {
+            UserSession.setUserType(customer);
+            UserSession.setCurrentUser(user);
+            if (user instanceof Librarian) {
+                UserSession.setUserType(librarian);
+            }
+            return true;
+        }
+        return false;
+    }
 }

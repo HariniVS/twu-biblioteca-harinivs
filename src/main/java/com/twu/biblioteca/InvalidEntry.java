@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.menu.Action;
+import com.twu.biblioteca.action.Action;
 
 public class InvalidEntry implements Action {
 
@@ -12,12 +12,7 @@ public class InvalidEntry implements Action {
     }
 
     @Override
-    public String toString() {
-        return invalidMessage;
-    }
-
-    @Override
-    public void performAction(UserInterface userInterface) {
+    public void performAction() {
         outputWriter.write(invalidMessage);
     }
 }

@@ -1,7 +1,9 @@
 package com.twu.biblioteca.books;
 
 
-public class Book {
+import com.twu.biblioteca.item.Item;
+
+public class Book implements Item {
 
     private String name;
     private String author;
@@ -29,7 +31,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

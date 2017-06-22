@@ -1,13 +1,13 @@
 package com.twu.biblioteca.user;
 
-class User {
+public class User {
 
     private final String address;
     private final int phoneNumber;
 
     @Override
     public String toString() {
-        return userId;
+        return userId+" "+userName+" "+emailId+" "+address+" "+phoneNumber;
     }
 
     private final String userId;
@@ -25,7 +25,7 @@ class User {
                 .getUserId().equals(userId);
     }
 
-    User(String userName, String emailId, String address, int phoneNumber, String userId) {
+    public User(String userName, String emailId, String address, int phoneNumber, String userId) {
         this.userName = userName;
         this.emailId = emailId;
         this.address = address;

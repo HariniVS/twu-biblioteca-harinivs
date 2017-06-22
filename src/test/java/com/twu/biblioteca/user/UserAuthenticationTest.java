@@ -2,6 +2,7 @@ package com.twu.biblioteca.user;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class UserAuthenticationTest {
@@ -12,12 +13,30 @@ public class UserAuthenticationTest {
         String userId = "123-1234";
         Password password = new Password("1234");
 
-        UserAuthentication userAuthentication = new UserAuthentication(userId, password);
-        assertTrue(userAuthentication.validateUser());
+        UserAuthentication userAuthentication = new UserAuthentication();
+        assertTrue(userAuthentication.validateUser(userId, password));
     }
 
     @Test
     public void shouldNotAuthenticateInvalidUser() {
+        new UserCredential();
+        String userId = "123-1234";
+        Password password = new Password("1235");
 
+        UserAuthentication userAuthentication = new UserAuthentication();
+        assertFalse(userAuthentication.validateUser(userId, password));
+    }
+
+    @Test
+    public void shouldIdentifyLibrarian() {
+        new UserCredential();
+        String userId = "456-4567";
+        Password password = new Password("4567");
+
+        UserAuthentication userAuthentication = new UserAuthentication();
+        userAuthentication.validateUser(userId, password);
+        System.out.println(new UserSession().getUserType());
+
+        assertTrue(new UserSession().getUserType().equals("Librarian"));
     }
 }

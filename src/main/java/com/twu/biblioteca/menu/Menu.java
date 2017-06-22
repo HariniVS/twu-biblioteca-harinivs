@@ -1,24 +1,33 @@
 package com.twu.biblioteca.menu;
 
-import java.util.HashMap;
+import com.twu.biblioteca.InputReader;
+import com.twu.biblioteca.InvalidEntry;
+import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.Repository;
+import com.twu.biblioteca.action.Action;
+
 import java.util.Map;
 
-public class Menu {
+public abstract class Menu {
 
-    private Map<String, Action> mainMenu = new HashMap<>();
+    private final OutputWriter outputWriter;
+    private Map<String, Action> menu;
 
-    public Menu() {
-        addOptionsToMenu("1", new ListAction());
-        addOptionsToMenu("2", new CheckoutAction());
-        addOptionsToMenu("3", new ReturnAction());
-        addOptionsToMenu("4", new QuitAction());
+    Menu(Repository repository, OutputWriter outputWriter, InputReader inputReader) {
+        this.outputWriter = outputWriter;
     }
 
-    public void addOptionsToMenu(String option, Action action) {
-        mainMenu.put(option, action);
+    public abstract void displayMenu();
+
+     void displayMenu(Map<String, Action> menu) {
+        this.menu = menu;
+        for (Map.Entry<String, Action> currentMenu : menu.entrySet()) {
+            outputWriter.write(currentMenu.getKey() + " " + currentMenu.getValue().toString());
+        }
     }
 
-    public Map<String, Action> getMenuItems() {
-        return mainMenu;
+    public void performAction(String input) {
+        Action action = menu.getOrDefault(input, new InvalidEntry(outputWriter));
+        action.performAction();
     }
 }

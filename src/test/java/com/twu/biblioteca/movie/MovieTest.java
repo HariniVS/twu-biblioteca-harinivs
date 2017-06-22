@@ -11,7 +11,7 @@ public class MovieTest {
         String expectedMovieName = "Pulp Fiction";
         Movie movie = new Movie("Pulp Fiction", 1995, "Quentin Tarantino", 9);
 
-        assertEquals(expectedMovieName, movie.getMovieName());
+        assertEquals(expectedMovieName, movie.getName());
     }
 
     @Test

@@ -1,19 +1,21 @@
 package com.twu.biblioteca.movie;
 
-public class Movie {
+import com.twu.biblioteca.item.Item;
+
+public class Movie implements Item {
 
     private final String movieName;
     private final int year;
 
     @Override
     public String toString() {
-        return  movieName + " " + year + " " + director + " " + rating;
+        return String.format("%-50s%-20s%-20s%-20s", movieName, year, director, rating);
     }
 
     @Override
     public boolean equals(Object object) {
         Movie movie = (Movie) object;
-        return movie.getMovieName().equals(movieName);
+        return movie.getName().equals(movieName);
     }
 
     private final String director;
@@ -26,7 +28,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    String getMovieName() {
+    public String getName() {
         return movieName;
     }
 
@@ -41,4 +43,5 @@ public class Movie {
     int getRating() {
         return rating;
     }
+
 }

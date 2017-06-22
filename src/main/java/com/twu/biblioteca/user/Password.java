@@ -12,11 +12,10 @@ public class Password {
     @Override
     public boolean equals(Object object) {
         Password passwordObject = (Password) object;
-        final String newPassword = passwordObject.password;
-        return newPassword.equals(password);
+        return passwordObject.password.equals(password);
     }
 
-    Password(String password) {
+    public Password(String password) {
         this.password = password;
     }
 }
