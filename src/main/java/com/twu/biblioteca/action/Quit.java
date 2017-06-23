@@ -1,6 +1,7 @@
 package com.twu.biblioteca.action;
 
 import com.twu.biblioteca.OutputWriter;
+import com.twu.biblioteca.QuitProgramException;
 
 public class Quit implements Action {
 
@@ -18,5 +19,6 @@ public class Quit implements Action {
     @Override
     public void performAction() {
         outputWriter.write("Thank you for using Bangalore Public Library !!");
+        throw new QuitProgramException();
     }
 }

@@ -29,7 +29,7 @@ public class CheckoutItem implements Action {
             outputWriter.write("Thank you! Enjoy the " + itemName);
             return;
         }
-        outputWriter.write("That " + itemName + "is not available.");
+        outputWriter.write("That " + itemName + " is not available.");
     }
 
     public String getBookNameFromUser() {

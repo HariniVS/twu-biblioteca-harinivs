@@ -2,7 +2,7 @@ package com.twu.biblioteca.action;
 
 import com.twu.biblioteca.OutputWriter;
 import com.twu.biblioteca.Repository;
-import com.twu.biblioteca.helpers.CheckoutItemTestHelper;
+import com.twu.biblioteca.helpers.CheckoutItemHelper;
 import com.twu.biblioteca.user.UserAuthentication;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ public class CheckoutItemTest {
 
     @Test
     public void shouldGetBookNameFromUser() {
-        CheckoutItemTestHelper checkout = new CheckoutItemTestHelper(
+        CheckoutItemHelper checkout = new CheckoutItemHelper(
                 new Repository(), new OutputWriter(new StringWriter()), "Book", new UserAuthentication());
         String bookName = checkout.getBookNameFromUser();
         String expectedBookName = "The Alchemist";
@@ -32,7 +32,7 @@ public class CheckoutItemTest {
     @Test
     public void shouldCheckoutItem() {
         final StringWriter writer = new StringWriter();
-        CheckoutItemTestHelper checkout = new CheckoutItemTestHelper(
+        CheckoutItemHelper checkout = new CheckoutItemHelper(
                 new Repository(), new OutputWriter(writer), "Book", new UserAuthentication());
         checkout.performAction();
 

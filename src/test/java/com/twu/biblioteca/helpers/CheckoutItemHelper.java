@@ -5,12 +5,12 @@ import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.action.CheckoutItem;
 import com.twu.biblioteca.user.UserAuthentication;
 
-public class CheckoutItemTestHelper extends CheckoutItem {
+public class CheckoutItemHelper extends CheckoutItem {
 
     private InputReaderTestHelper inputReader = new InputReaderTestHelper("The Alchemist");
 
-    public CheckoutItemTestHelper(Repository repository, OutputWriter outputWriter, String itemName,
-                                  UserAuthentication userAuthentication) {
+    public CheckoutItemHelper(Repository repository, OutputWriter outputWriter, String itemName,
+                              UserAuthentication userAuthentication) {
         super(repository, outputWriter, itemName, userAuthentication);
     }
 

@@ -11,11 +11,15 @@ class Workflow {
 
     void start() {
         String inputFromUser;
-        do {
-            userInterface.displayMenu();
-            inputFromUser = userInterface.getInputFromUser();
-            userInterface.performAction(inputFromUser);
-        } while (!inputFromUser.equals("4"));
+
+        try {
+            do {
+                userInterface.displayMenu();
+                inputFromUser = userInterface.getInputFromUser();
+                userInterface.performAction(inputFromUser);
+            } while (true);
+        } catch (QuitProgramException exception) {
+        }
     }
 
 }

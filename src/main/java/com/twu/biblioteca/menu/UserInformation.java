@@ -8,7 +8,7 @@ public class UserInformation implements Action {
     private final OutputWriter outputWriter;
     private UserAuthentication userAuthentication;
 
-    UserInformation(OutputWriter outputWriter, UserAuthentication userAuthentication) {
+    public UserInformation(OutputWriter outputWriter, UserAuthentication userAuthentication) {
         this.outputWriter = outputWriter;
         this.userAuthentication = userAuthentication;
     }

@@ -25,10 +25,6 @@ public class UserInterface {
         return inputReader.readInput();
     }
 
-    public void write(String output) {
-        outputWriter.write(output);
-    }
-
     public void performAction(String input) {
         menu.performAction(input);
     }

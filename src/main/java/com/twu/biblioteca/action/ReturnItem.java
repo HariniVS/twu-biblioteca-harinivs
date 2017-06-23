@@ -23,13 +23,13 @@ public class ReturnItem implements Action {
     @Override
     public void performAction() {
         if (repository.returnItem(getBookNameFromUser(), itemName)) {
-            outputWriter.write("Thank you for returning the book.");
+            outputWriter.write("Thank you for returning the "+itemName);
             return;
         }
-        outputWriter.write("That is not a valid book to return.");
+        outputWriter.write("That is not a valid "+itemName+" to return.");
     }
 
-    private String getBookNameFromUser() {
+    public String getBookNameFromUser() {
         return new InputReader().readInput();
     }
 }

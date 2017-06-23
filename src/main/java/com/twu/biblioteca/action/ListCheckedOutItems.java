@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 public class ListCheckedOutItems implements Action {
+    private final String book = "Book";
     private final String itemName;
     private final Repository repository;
     private final OutputWriter outputWriter;
@@ -32,7 +33,7 @@ public class ListCheckedOutItems implements Action {
     @Override
     public void performAction() {
         checkedOutItems = repository.getCheckedOutItem();
-        if (itemName.equals("Book")) {
+        if (itemName.equals(book)) {
             displayCheckedOutBooks();
             return;
         }

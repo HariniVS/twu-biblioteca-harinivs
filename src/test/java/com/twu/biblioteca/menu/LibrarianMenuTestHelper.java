@@ -8,8 +8,8 @@ import com.twu.biblioteca.user.UserAuthentication;
 public class LibrarianMenuTestHelper extends LibrarianMenu {
     private boolean actionPerformed;
 
-    public LibrarianMenuTestHelper(Repository repository, OutputWriter outputWriter,
-                                   InputReader inputReader, UserAuthentication userAuthentication) {
+    LibrarianMenuTestHelper(Repository repository, OutputWriter outputWriter,
+                            InputReader inputReader, UserAuthentication userAuthentication) {
         super(repository, outputWriter, inputReader, userAuthentication);
     }
 
@@ -19,7 +19,7 @@ public class LibrarianMenuTestHelper extends LibrarianMenu {
         actionPerformed = true;
     }
 
-    public boolean isActionPerformed() {
+    boolean isActionPerformed() {
         return actionPerformed;
     }
 }
